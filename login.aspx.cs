@@ -16,6 +16,16 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         string nomeUsuario, nivelUsuario;
+
+        public enum Nivel
+        {
+            admin = 0,
+            comum = 1,
+            atendimento = 2,            
+        }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -24,9 +34,9 @@ namespace Sabor_da_Fruta
 
 
         }
+       
+       
 
-
-    
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -69,20 +79,47 @@ namespace Sabor_da_Fruta
                     nomeUsuario = reader["nome"].ToString();
                     nivelUsuario = reader["nivel"].ToString();
                     panelLogin.Visible = true;
-                    lblMensagemErro.Text = nomeUsuario;
+                    lblMensagemErro.Text = nomeUsuario; //colocar o nome do usuário
+                }
 
 
+
+
+                if (nivelUsuario == "admin") // se for  nível admin vai para index.aspx
+                {
+
+                    // Server.Transfer("index.aspx");
+                    Response.Redirect("index.aspx?nome=" + nomeUsuario + "&nivel=" + nivelUsuario); // redirecionamento com parâmetro
+                    lblMensagemErro.Text = "Logou";
+                    // panelLogin.Visible = false;
+                    txtSenha.Text = "";
+                    txtUsuario.Text = "";
+                }
+                else if (nivelUsuario == "comum") // se for  nível admin vai para pagamento.aspx
+                {
+                     
+                    Response.Redirect("pagamento.aspx?nome=" + nomeUsuario + "&nivel=" + nivelUsuario); // redirecionamento com parâmetro
+                    lblMensagemErro.Text = "Logou";
+                    // panelLogin.Visible = false;
+                    txtSenha.Text = "";
+                    txtUsuario.Text = "";
 
 
                 }
-                
-                
-               // Server.Transfer("index.aspx");
-               Response.Redirect("index.aspx?nome=" + nomeUsuario + "&nivel=" + nivelUsuario ); // redirecionamento com parâmetro
-                lblMensagemErro.Text = "Logou";
-               // panelLogin.Visible = false;
-                txtSenha.Text = "";
-                txtUsuario.Text = "";
+                else if (nivelUsuario == "atendimento") // se for  nível atendimento vai para atendimento.aspx
+                {
+                    
+                    Response.Redirect("atendimento.aspx?nome=" + nomeUsuario + "&nivel=" + nivelUsuario); // redirecionamento com parâmetro
+                    lblMensagemErro.Text = "Logou";
+                    // panelLogin.Visible = false;
+                    txtSenha.Text = "";
+                    txtUsuario.Text = "";
+
+
+                }
+
+               
+               
 
             }
             else

@@ -68,12 +68,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="atendimento.aspx" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
     <Content Include="Mostrar.js" />
+    <Content Include="pagamento.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="atendimento.aspx.cs">
+      <DependentUpon>atendimento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="atendimento.aspx.designer.cs">
+      <DependentUpon>atendimento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Conexao.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -88,6 +97,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pagamento.aspx.cs">
+      <DependentUpon>pagamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pagamento.aspx.designer.cs">
+      <DependentUpon>pagamento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
