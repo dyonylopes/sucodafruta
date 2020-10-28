@@ -12,19 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="WaterMark.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-
-
+    <script src="WaterMark.min.js" type="text/javascript"></script>    <script type="text/javascript">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Atendimento</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
 </body>
 </html>

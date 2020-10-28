@@ -17,15 +17,7 @@ namespace Sabor_da_Fruta
         Conexao con = new Conexao();
         string nomeUsuario, nivelUsuario;
 
-        public enum Nivel
-        {
-            admin = 0,
-            comum = 1,
-            atendimento = 2,            
-        }
-
-
-
+       
         protected void Page_Load(object sender, EventArgs e)
         {
 

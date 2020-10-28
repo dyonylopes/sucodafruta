@@ -27,20 +27,22 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.aspx">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Cadastros
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" />
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-menu" aria-labelledby="Dropdown" />
+         <!-- <a class="dropdown-item" href="#">Comanda</a> -->
+          <a class="dropdown-item" data-target="#ModalCategoria>Categorias</a>
+          <a class="dropdown-item" data-target="#ModalFornecedores>Fornecedores</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" data-target="#ModalProdutos>Produtos</a>
+
         </div>
       </li>
       <li class="nav-item active">
@@ -92,7 +94,6 @@
                     </td>
                     <td  colspan="3">
                           <asp:Textbox ID="txtnome" runat="server" OnTextChanged="txtnome_TextChanged" /> 
-
                     </td>
                     
                 </tr>
@@ -132,10 +133,10 @@
                         <asp:Label Text="Categoria" runat="server" />  
                     </td>
                     <td  colspan="2">
-                          <asp:DropDownList ID="cbCategoria" runat="server" Width="124px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged"> 
+                          <asp:DropDownList ID="cbCategoria" runat="server" Width="124px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
                           
 
-                           </asp:DropDownList>
+                           
 
                     </td>
                     
@@ -193,17 +194,17 @@
                 </tr>
 
 
-                <tr> <!-- Botões -->
+              <tr> <!-- Botões -->
                     <td colspan="3">
                         <asp:Button   ID="btnNovo" Text="Novo" runat="server" OnClick="btnNovo_Click" Enabled="False" /> 
                         <asp:Button   ID="btnSalvar" Text="Salvar" runat="server" OnClick="btnSalvar_Click" Enabled="False" style="height: 26px" />  
                         <asp:Button   ID="btnEditar" Text="Editar" runat="server" Enabled="False" OnClick="btnEditar_Click" />  
                         <asp:Button   ID="btnExcluir" Text="Deletar" runat="server" Enabled="False" OnClick="btnExcluir_Click" /> 
-                        <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
+                       <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
                     </td>
                   
                 </tr>
-                <!-- Para exigir a mensagem de aviso --> 
+                <!-- Para exigir a mensagem de aviso -->
 
                  <tr>
                     <td colspan="3">
@@ -241,6 +242,73 @@
             </Columns>
                 </asp:GridView>
         </div>
+
+
+
+        
+
+
+ <!-- Modal  Reserve Agora -->
+        <div class="modal" id="ModalProdutos">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Reserve Agora</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <label>Nome:</label>
+                        <asp:TextBox placeholder="Digite seu nome..." ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>Sobrenome:</label>
+                        <asp:TextBox placeholder="Digite seu sobrenome..." ID="txtSobrenome" CssClass="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>Quantidades de Adultos:</label>
+                        <asp:TextBox type="number" min="0" MaxLength="10" ID="txtAdultos" CssClass="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>Quantidades de Crianças:</label>
+                        <asp:TextBox type="number" min="0" MaxLength="10" ID="txtCriancas" CssClass="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>Data / Hora:</label>
+                        <asp:TextBox Type="datetime-local" ID="txtData" CssClass="form-control" runat="server"></asp:TextBox>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+    
+                        <asp:Button runat="server" ID="btnResrva" CssClass="btn btn-primary" Text="Reservar" OnClick="btnResrva_Click" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
     </form>
+
+     
+
+    
+
+   
+
+
+
+
  </body>
 </html>

@@ -172,11 +172,7 @@ namespace Sabor_da_Fruta
                 grid.Visible = false;
 
 
-            }
-
-
-
-            
+            }            
 
 
             con.FecharCon();
@@ -186,7 +182,7 @@ namespace Sabor_da_Fruta
         {
             if(txtnome.Text =="")
             {
-                lblMensagemErro.Text = "Preencha o campo Nome!";               
+               lblMensagemErro.Text = "Preencha o campo Nome!";               
                txtnome.Focus();
                 return;
 
@@ -517,6 +513,11 @@ namespace Sabor_da_Fruta
 
             con.FecharCon();
             
+        }
+
+        protected void btnResrva_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
