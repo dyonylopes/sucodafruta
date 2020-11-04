@@ -72,7 +72,7 @@
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <asp:LinkButton ID="LinkRecp" class="underlineHover" runat="server" Text="Recuperar Senha" href="#" />
+      <asp:LinkButton ID="LinkRecp" class="underlineHover" runat="server" Text="" href="#" />
     </div>
 
   

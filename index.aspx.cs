@@ -29,7 +29,7 @@ namespace Sabor_da_Fruta
 
             Listar();
             //DANDO NIVEL DE PERMISSÃO AO USUARIO
-            if(nivelUsuario == "admin")
+            if(nivelUsuario == "administrador")
             {
                 btnNovo.Enabled = true;
             }
@@ -43,6 +43,12 @@ namespace Sabor_da_Fruta
                 CarregarCategorias();
 
             }
+            if (cbCategoria2.Text == "")
+            {
+
+                CarregarCategorias2();
+
+            }
 
             if (cbFornecedor.Text == "")
             {
@@ -50,11 +56,27 @@ namespace Sabor_da_Fruta
                 CarregarFornecedores();
 
             }
+            if (cbFornecedor2.Text == "")
+            {
 
+                CarregarFornecedores2();
+
+            }
+
+            if (cbNivel.Text == "")
+            {
+
+                CarregarUsuarios();
+
+            }
+
+
+           
 
 
         }
 
+        // carregar fornecedores
         private void CarregarFornecedores()
         {
             string sql;
@@ -96,7 +118,51 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
-        
+        // carregar fornecedores2
+
+
+        private void CarregarFornecedores2()
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT * FROM  fornecedores order by nome asc";
+            cmd = new MySqlCommand(sql, con.con);
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+
+                cbFornecedor2.Enabled = true;
+                cbFornecedor2.DataSource = dt; //receber na Datatable
+                cbFornecedor2.DataTextField = "nome";
+                cbFornecedor2.DataValueField = "id"; //savar no id
+                cbFornecedor2.DataBind(); // Atualizar dados           
+
+            }
+            else
+            {
+
+                cbFornecedor2.Enabled = false;
+                lblMensagemOK.Text = "Não possuem fornecedores cadastradas !!!";
+
+
+
+            }
+
+
+
+
+
+
+            con.FecharCon();
+        }
+
+        //carregar Categorias
 
         private void CarregarCategorias()
         {
@@ -139,9 +205,91 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
+        //carregar categorias2
+
+        private void CarregarCategorias2()
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT * FROM categorias order by nome asc";
+            cmd = new MySqlCommand(sql, con.con);
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+
+                cbCategoria2.Enabled = true;
+                cbCategoria2.DataSource = dt; //receber na Datatable
+                cbCategoria2.DataTextField = "nome";
+                cbCategoria2.DataValueField = "id";
+                cbCategoria2.DataBind(); // Atualizar dados           
+
+            }
+            else
+            {
+
+                cbCategoria2.Enabled = false;
+                lblMensagemOK.Text = "Não possuem categorias cadastradas !!!";
 
 
-    
+
+            }
+
+
+
+
+
+
+            con.FecharCon();
+        }
+
+        //carregar usuários
+
+        private void CarregarUsuarios()
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT * FROM nivel order by nivel asc";
+            cmd = new MySqlCommand(sql, con.con);
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+
+                cbNivel.Enabled = true;
+                cbNivel.DataSource = dt; //receber na Datatable
+                cbNivel.DataTextField = "nivel";
+                cbNivel.DataValueField = "id";
+                cbNivel.DataBind(); // Atualizar dados           
+
+            }
+            else
+            {
+
+                cbNivel.Enabled = false;
+                lblMensagemOK.Text = "Não possuem usuários cadastradas !!!";
+
+
+
+            }
+
+
+
+
+
+
+            con.FecharCon();
+        }
 
         private void Listar()
         {
@@ -178,11 +326,13 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
+
+        //btnsalvar
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
             if(txtnome.Text =="")
             {
-               lblMensagemErro.Text = "Preencha o campo Nome!";               
+               lblMensagemErro.Text = "Preencha o campo Nome! 111";               
                txtnome.Focus();
                 return;
 
@@ -244,6 +394,146 @@ namespace Sabor_da_Fruta
             txtbuscar.Enabled = true;
             ApagarCampos();
         }
+        //final btnsalvar
+
+
+
+        //btnsalvar2
+
+        protected void btnSalvar2_Click(object sender, EventArgs e)
+        {
+            if (txtnome2.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Nome!  2222";
+                txtnome2.Focus();
+                return;
+
+
+
+            }
+            if (txtdescricao2.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Descrição!";
+                txtdescricao.Focus();
+                return;
+
+
+            }
+            if (txtvalor2.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Valor!";
+                txtvalor2.Focus();
+                return;
+
+            }
+            if (txtquantidade2.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Quantidade!";
+                txtquantidade2.Focus();
+                return;
+
+            }
+
+            Salvar2();
+            LimparCampos2();
+
+        }
+
+        private void Salvar2()
+        {
+            string sql;
+            MySqlCommand cmd;
+
+            con.AbrirCon();
+
+            sql = "INSERT INTO produtos (nome, descricao, valor, quantidade, categoria, id_fornecedor) VALUES (@nome, @descricao, @valor, @quantidade, @categoria, @id_fornecedor)";
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@nome", txtnome2.Text);
+            cmd.Parameters.AddWithValue("@descricao", txtdescricao2.Text);
+            cmd.Parameters.AddWithValue("@valor", Convert.ToDouble(txtvalor2.Text));
+            cmd.Parameters.AddWithValue("@quantidade", txtquantidade2.Text);
+            cmd.Parameters.AddWithValue("@categoria", cbCategoria2.SelectedItem.Text); //associação de tabelas
+            cmd.Parameters.AddWithValue("@id_fornecedor", cbFornecedor2.SelectedItem.Value); //relacionamento de tabelas
+
+
+            cmd.ExecuteNonQuery();
+            lblMensagemOK.Text = "Salvo com Sucesso !!";
+            Listar();
+            con.FecharCon();
+
+            
+
+        }
+
+
+
+
+        //final btnsalvar2
+
+        // btnCad Usuario >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        protected void btnCadUsuario_Click(object sender, EventArgs e)
+        {
+            if (txtNomeUsuario.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Nome!  2222";
+                txtNomeUsuario.Focus();
+                return;
+
+
+
+            }
+            if (txtLogin.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Descrição!";
+                txtLogin.Focus();
+                return;
+
+
+            }
+
+            if (txtSenha.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Quantidade!";
+                txtSenha.Focus();
+                return;
+
+            }
+
+            CadUsuario();
+            
+
+        }
+
+        private void CadUsuario()
+        {
+            string sql;
+            MySqlCommand cmd;
+
+            con.AbrirCon();
+
+            sql = "INSERT INTO usuarios (nome, usuario, senha, nivel_nivel) VALUES (@nome, @usuario, @senha, @nivel_nivel)";
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@nome", txtNomeUsuario.Text);
+            cmd.Parameters.AddWithValue("@usuario", txtLogin.Text);
+            cmd.Parameters.AddWithValue("@senha", Convert.ToDouble(txtSenha.Text));
+            cmd.Parameters.AddWithValue("@nivel_nivel", cbNivel.SelectedItem.Text);
+
+
+            cmd.ExecuteNonQuery();
+            lblUsuario.Text = "Salvo com Sucesso !!";
+            
+            con.FecharCon();
+
+
+
+        }
+
+
+
+
+
+
 
         private void LimparCampos()
         {
@@ -258,6 +548,23 @@ namespace Sabor_da_Fruta
 
 
         }
+
+        //limpar 2
+        private void LimparCampos2()
+        {
+            txtnome2.Text = "";
+            txtdescricao2.Text = "";
+            txtvalor2.Text= "";
+            txtquantidade2.Text = "";
+            lblMensagemErro.Text = "";
+            lblMensagemOK.Text = "";
+
+
+
+
+        }
+
+
 
         protected void btnNovo_Click(object sender, EventArgs e)
         {
@@ -515,10 +822,14 @@ namespace Sabor_da_Fruta
             
         }
 
-        protected void btnResrva_Click(object sender, EventArgs e)
+        
+
+        protected void cbFornecedor_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+     
 
         protected void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {

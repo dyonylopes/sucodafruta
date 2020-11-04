@@ -69,7 +69,7 @@ namespace Sabor_da_Fruta
                 while (reader.Read())
                 {
                     nomeUsuario = reader["nome"].ToString();
-                    nivelUsuario = reader["nivel"].ToString();
+                    nivelUsuario = reader["nivel_nivel"].ToString();
                     panelLogin.Visible = true;
                     lblMensagemErro.Text = nomeUsuario; //colocar o nome do usuário
                 }
@@ -77,7 +77,7 @@ namespace Sabor_da_Fruta
 
 
 
-                if (nivelUsuario == "admin") // se for  nível admin vai para index.aspx
+                if (nivelUsuario == "administrador") // se for  nível admin vai para index.aspx
                 {
 
                     // Server.Transfer("index.aspx");

@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
+    <script src="../js/Mostrar.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
@@ -38,10 +39,14 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="Dropdown" />
          <!-- <a class="dropdown-item" href="#">Comanda</a> -->
-          <a class="dropdown-item" data-target="#ModalCategoria>Categorias</a>
-          <a class="dropdown-item" data-target="#ModalFornecedores>Fornecedores</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#ModalCategorias">Categorias</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#ModalFornecedores">Fornecedores</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" data-target="#ModalProdutos>Produtos</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#ModalProdutos">Produtos</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#ModalUsuarios">Usuários</a>
+
+
+
 
         </div>
       </li>
@@ -167,7 +172,7 @@
                         <asp:Label Text="Fornecedor" runat="server" />  
                     </td>
                     <td  colspan="2">
-                          <asp:DropDownList ID="cbFornecedor" runat="server" Width="124px" > 
+                          <asp:DropDownList ID="cbFornecedor" runat="server" Width="124px" OnSelectedIndexChanged="cbFornecedor_SelectedIndexChanged" > 
                           
 
                            </asp:DropDownList>
@@ -245,44 +250,101 @@
 
 
 
-        
+  
 
 
- <!-- Modal  Reserve Agora -->
+ 
+
+
+
+
+<!-- Modal  Produtos -->
         <div class="modal" id="ModalProdutos">
             <div class="modal-dialog">
                 <div class="modal-content">
 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Reserve Agora</h4>
+                        <h4 class="modal-title">Cadastro de Produtos</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <!-- Modal body -->
                     <div class="modal-body">
 
-                        <label>Nome:</label>
-                        <asp:TextBox placeholder="Digite seu nome..." ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox placeholder="Nome do Produto..." ID="txtnome2" CssClass="form-control" runat="server" />
                         <br />
-                        <label>Sobrenome:</label>
-                        <asp:TextBox placeholder="Digite seu sobrenome..." ID="txtSobrenome" CssClass="form-control" runat="server"></asp:TextBox>
+                         <asp:TextBox placeholder="Descrição do Produto..." ID="txtdescricao2" CssClass="form-control" runat="server" />
                         <br />
-                        <label>Quantidades de Adultos:</label>
-                        <asp:TextBox type="number" min="0" MaxLength="10" ID="txtAdultos" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox placeholder="Valor do Produto..." ID="txtvalor2" CssClass="form-control" runat="server" />
                         <br />
-                        <label>Quantidades de Crianças:</label>
-                        <asp:TextBox type="number" min="0" MaxLength="10" ID="txtCriancas" CssClass="form-control" runat="server"></asp:TextBox>
+                        <label>Quantidade:</label>
+                        <asp:TextBox type="number" min="0" MaxLength="10" ID="txtquantidade2" CssClass="form-control" runat="server" />
                         <br />
-                        <label>Data / Hora:</label>
-                        <asp:TextBox Type="datetime-local" ID="txtData" CssClass="form-control" runat="server"></asp:TextBox>
 
+                        <asp:Label Text="Categoria" runat="server" />                   
+                   
+                        <asp:DropDownList ID="cbCategoria2" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
+                        <br />
+                        <asp:Label Text="Fornecedor" runat="server" />                   
+                        <br />
+                        <asp:DropDownList ID="cbFornecedor2" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
+                        <br />
+                                              
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
     
-                        <asp:Button runat="server" ID="btnResrva" CssClass="btn btn-primary" Text="Reservar" OnClick="btnResrva_Click" />
+                        <asp:Button runat="server" ID="btnSalvar2" CssClass="btn btn-primary" Text="Salvar" OnClick="btnSalvar2_Click" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+<!-- Modal  Usuários -->
+        <div class="modal" id="ModalUsuarios">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cadastro de Usuários</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <asp:TextBox placeholder="Nome do Usuário..." ID="txtNomeUsuario" CssClass="form-control" runat="server" />
+                        <br />
+                         <asp:TextBox placeholder="Login do Usuário..." ID="txtLogin" CssClass="form-control" runat="server" />
+                        <br />
+                        <asp:TextBox placeholder="Senha..." ID="txtSenha" CssClass="form-control" runat="server" TextMode="Password" />
+                        <br />
+                        <asp:Label Text="Nível" runat="server" />                   
+                   
+                        <asp:DropDownList ID="cbNivel" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
+
+
+                        <asp:CheckBox  runat="server" onclick="myFunction()"  Text = " Mostrar"/>
+
+
+
+                        <br />
+
+                        <asp:Label Text="" ID="lblUsuario" runat="server" ForeColor="Green" />
+                        <br />
+                        
+                                              
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+    
+                        <asp:Button runat="server" ID="btnCadUsuario" CssClass="btn btn-primary" Text="Salvar" OnClick="btnCadUsuario_Click" />
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
 
@@ -292,7 +354,7 @@
 
 
 
-
+      
 
 
 
@@ -306,6 +368,10 @@
     
 
    
+    
+              
+
+
 
 
 
