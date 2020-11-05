@@ -14,8 +14,7 @@
 
     <script src="../js/Mostrar.js"></script>
 
-    <link href="CssStyle/style.css" rel="stylesheet" />
-
+     <link href="../css/style.csss" rel="stylesheet" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Cadastro</title>
