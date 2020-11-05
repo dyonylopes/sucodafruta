@@ -32,7 +32,7 @@
         
         <style>
             body {
-                background: url("img/restaurante.jpeg");
+                background: url("imagens/restaurante.jpeg");
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;
