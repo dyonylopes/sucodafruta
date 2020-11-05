@@ -1,0 +1,51 @@
+﻿
+
+/*Css - Titutulo da h1 e h2*/
+h1, h2 {
+    text-align: center; /*Alinhamento: centro*/
+    font-family: Arial, Verdana, sans-serif; /* fromatção da letra*/
+    font-style: oblique; /* estilo da letra*/
+    font-size: 40px; /* tamanho da letra*/
+}
+
+/* Css do menu*/
+nav {
+    margin: inherit;
+    margin-top: 0px; /* margem superio do menu*/
+    margin-bottom: 0px; /*margem inferior do menu*/
+    margin-right: 0px; /*margem direita do menu*/
+    margin-left: 0px; /*margem esquerda do menu*/
+    font-family: Arial, Verdana, sans-serif; /* fromatção da letra do menu*/
+    font-style: oblique; /* estilo da letra do menu*/
+    background: linear-gradient(to right, #ff0000, #ff6a00,#ffd800); /* cor de fundo do menu*/
+
+}
+
+/*Css da tabela cadastro*/
+table {
+   
+     margin-top: 5px; /* margem superio da tabela de cadatro*/
+     margin-bottom: 5px; /*margem inferior da tabela de cadatro*/
+     margin-right: 510px; /*margem direita da tabela de cadatro*/
+     margin-left: 545px; /*margem esquerda da tabela de cadatro*/
+     font-family: Arial, Verdana, sans-serif; /* fromatção da letra da tabela de cadatro*/
+     font-style: oblique; /* estilo da letra da tabela de cadatro*/
+}
+
+/*Css da Gridview*/
+.gridview {
+    margin-top: 5px; /* margem superio da gridview*/
+    margin-bottom: 10px; /*margem inferior da gridview*/
+    margin-right: 300px; /*margem direita da gridview*/
+    margin-left: 300px; /*margem esquerda da gridview*/
+    font-family: Arial, Verdana, sans-serif; /* fromatção da letra da gridview*/
+    font-style: oblique; /* estilo da letra da gridview*/
+    word-spacing: 10px; /* espaçamento da gridview*/
+    text-align: center;
+    width: auto;
+    height: auto;
+}
+
+/**/
+body {
+}
