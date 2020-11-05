@@ -69,8 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="atendimento.aspx" />
-    <Content Include="CssStyle\style.css" />
-    <Content Include="img\restaurante.jpeg" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
     <Content Include="Mostrar.js" />

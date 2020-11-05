@@ -30,15 +30,7 @@
 <body>
     <form id="frmLogin" runat="server" class="container">
         
-        <style>
-            body {
-                background: url("img/restaurante.jpeg");
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-            }
-        </style>
+
             
   <div class="wrapper fadeInDown">
   <div id="formContent">
@@ -46,7 +38,7 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="../imagens/"  class="container" id="icon" alt="Faça seu Login" />
+      <img src="../imagens/logo.png"  class="container" id="icon" alt="Faça seu Login" />
     </div>
       <!-- Alert -->
       <asp:Panel ID="panelLogin" runat="server" >

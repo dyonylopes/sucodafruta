@@ -7,33 +7,16 @@
     <!-- Css | BT -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     
-    <script src="../css/bootstrap.css"></script>
+    <scrip src="../css/bootstrap.css"></scrip>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
     <script src="../js/Mostrar.js"></script>
-
-    <link href="CssStyle/style.css" rel="stylesheet" />
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Cadastro</title>
+    <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-
-    <style>
-            body {
-                background:linear-gradient(#FFA07A, #F0E68C, #FFE4B5);
-                 background-repeat: no-repeat;
-                 background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                color: #000000;
-            }
-        </style>
-           
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Suco da Fruta</a>
@@ -82,7 +65,7 @@
 
 
 
-    <h1>Cadastrar produto</h1>
+    
         <div>
             <asp:HiddenField ID="idproduto" runat="server" />  <!-- para ocultar ID do produto -->
 
@@ -217,10 +200,10 @@
 
               <tr> <!-- Botões -->
                     <td colspan="3">
-                        <asp:Button   ID="btnNovo" Text="Novo" runat="server" CssClass="btn btn-outline-primary my-2 my-sm-0" OnClick="btnNovo_Click" Enabled="False" /> 
-                        <asp:Button   ID="btnSalvar" Text="Salvar" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnSalvar_Click" Enabled="False" />  
-                        <asp:Button   ID="btnEditar" Text="Editar" runat="server" CssClass="btn btn-outline-info my-2 my-sm-0" Enabled="False" OnClick="btnEditar_Click" />  
-                        <asp:Button   ID="btnExcluir" Text="Deletar" runat="server" CssClass="btn btn-outline-danger my-2 my-sm-0" Enabled="False" OnClick="btnExcluir_Click" /> 
+                        <asp:Button   ID="btnNovo" Text="Novo" runat="server" OnClick="btnNovo_Click" Enabled="False" /> 
+                        <asp:Button   ID="btnSalvar" Text="Salvar" runat="server" OnClick="btnSalvar_Click" Enabled="False" style="height: 26px" />  
+                        <asp:Button   ID="btnEditar" Text="Editar" runat="server" Enabled="False" OnClick="btnEditar_Click" />  
+                        <asp:Button   ID="btnExcluir" Text="Deletar" runat="server" Enabled="False" OnClick="btnExcluir_Click" /> 
                        <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
                     </td>
                   
@@ -243,9 +226,7 @@
 
             <br /><br />
 
-            <h2>Tabela de produtos</h2>
-
-            <asp:GridView ID="grid" runat="server" CssClass="gridview" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
+            <asp:GridView ID="grid" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField Datafield="nome" HeaderText="Produto"/>
                 <asp:BoundField Datafield="valor" HeaderText="Valor"/>
@@ -258,7 +239,7 @@
 
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button  ID="btnSelecionar" Text="Selecionar" CssClass="btn btn-outline-danger my-2 my-sm-0" CommandArgument='<%# Eval("id") %>' runat="server" OnClick ="btnSelecionar_Click" />
+                        <asp:Button  ID="btnSelecionar" Text="Selecionar" CommandArgument='<%# Eval("id") %>' runat="server" OnClick ="btnSelecionar_Click" />
                     </ItemTemplate>
 
                 </asp:TemplateField>
