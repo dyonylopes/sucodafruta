@@ -30,7 +30,15 @@
 <body>
     <form id="frmLogin" runat="server" class="container">
         
-
+        <style>
+            body {
+                background: url("img/restaurante.jpeg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+        </style>
             
   <div class="wrapper fadeInDown">
   <div id="formContent">
