@@ -24,7 +24,7 @@
 
     <style>
             body {
-                background:linear-gradient(#FFA07A, #F0E68C, #FFE4B5);
+                background:linear-gradient(#ffffff, #FFFAFA, #C0C0C0);
                  background-repeat: no-repeat;
                  background-size: cover;
                 background-position: center;
@@ -303,8 +303,8 @@
                    
                         <asp:DropDownList ID="cbCategoria2" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
                         <br />
-                        <asp:Label Text="Fornecedor" runat="server" />            
-                       
+                        <asp:Label Text="Fornecedor" runat="server" />                   
+                        <br />
                         <asp:DropDownList ID="cbFornecedor2" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
                         <br />
                                               

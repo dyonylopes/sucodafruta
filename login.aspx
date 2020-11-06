@@ -46,11 +46,11 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="../imagens/"  class="container" id="icon" alt="Faça seu Login" />
+      <img src="../imagens/logo.png"  class="container" id="icon" alt="Faça seu Login" />
     </div>
       <!-- Alert -->
       <asp:Panel ID="panelLogin" runat="server" >
-    <div class="alert alert-dark" role="alert">
+      <div class="alert alert-danger" role="alert">
           <asp:Label Text="" ID="lblMensagemErro" runat="server" />
       </div>
       </asp:Panel>
