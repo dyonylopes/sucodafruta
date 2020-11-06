@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script src="../js/Mostrar.js"></script>
 
-     <link href="../css/style.csss" rel="stylesheet" />
+     <link href="../css/style.css" rel="stylesheet" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Cadastro</title>
@@ -302,8 +302,8 @@
                    
                         <asp:DropDownList ID="cbCategoria2" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
                         <br />
-                        <asp:Label Text="Fornecedor" runat="server" />                   
-                        <br />
+                        <asp:Label Text="Fornecedor" runat="server" />            
+                       
                         <asp:DropDownList ID="cbFornecedor2" runat="server"  Width="224px"  OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" /> 
                         <br />
                                               

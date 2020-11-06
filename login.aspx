@@ -50,7 +50,7 @@
     </div>
       <!-- Alert -->
       <asp:Panel ID="panelLogin" runat="server" >
-      <div class="alert alert-danger" role="alert">
+    <div class="alert alert-dark" role="alert">
           <asp:Label Text="" ID="lblMensagemErro" runat="server" />
       </div>
       </asp:Panel>

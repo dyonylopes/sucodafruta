@@ -9,7 +9,7 @@ namespace Sabor_da_Fruta
     public class Conexao
     {
 
-        public string conec = "SERVER=localhost; DATABASE=sucodafruta; UID=sucodafruta; PWD=sucodafruta; PORT=3306";
+        public string conec = "SERVER=localhost; DATABASE=sucodafruta; UID=root; PWD=root; PORT=3306";
         public MySqlConnection con = null;
 
         public void AbrirCon ()
