@@ -376,6 +376,43 @@
 
 
 
+        <!-- Modal Categorias -->
+        <div class="border border-dark">
+            <div class="modal" id="ModalCategorias">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cadastro de Categoria</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <asp:TextBox placeholder="Nome da categoria..." ID="txtNomeCategoria" CssClass="form-control" runat="server" />
+                                                  
+                        </div>
+                         <br />
+
+                            <asp:Label Text="" ID="lblCategorias" runat="server" ForeColor="Green" />
+                            <br />
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+
+                            <asp:Button runat="server" ID="btnCadCadastro" CssClass="btn btn-success" Text="Salvar" OnClick="btnCadCadastro_Click" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
 
 

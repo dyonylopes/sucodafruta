@@ -529,13 +529,43 @@ namespace Sabor_da_Fruta
 
         }
 
+        /* Modal categorias*/
+        protected void btnCadCadastro_Click(object sender, EventArgs e)
+        {
+            if (txtNomeCategoria.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Nome!  2222";
+                txtNomeCategoria.Focus();
+                return;
+
+            }
+
+            CadCategoria();
+        }
+
+        private void CadCategoria()
+        {
+            string sql;
+            MySqlCommand cmd;
+
+            con.AbrirCon();
+
+            sql = "INSERT INTO categorias (nome) VALUES (@nome)";
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@nome", txtNomeCategoria.Text);
+
+
+            cmd.ExecuteNonQuery();
+            lblCategorias.Text = "Salvo com Sucesso !!";
+
+            con.FecharCon();
+
+        }
 
 
 
 
-
-
-        private void LimparCampos()
+            private void LimparCampos()
         {
             txtnome.Text = "";
             txtdescricao.Text = "";
@@ -822,14 +852,16 @@ namespace Sabor_da_Fruta
             
         }
 
-        
+ 
+
+
 
         protected void cbFornecedor_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-     
+    
 
         protected void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
