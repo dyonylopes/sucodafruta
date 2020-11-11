@@ -384,7 +384,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Cadastro de Categoria</h4>
+                            <h4 class="modal-title">Cadastro de Categorias</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -411,6 +411,49 @@
             </div>
         </div>
 
+
+
+          <!-- Modal  Fornecedores -->
+
+        <div class="border border-dark">
+            <div class="modal" id="ModalFornecedores">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cadastro de Fornecedores</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <asp:TextBox placeholder="Nome do Fornecedor..." ID="txtNomeFornecedor" CssClass="form-control" runat="server" />
+                            <br />
+                            <asp:TextBox placeholder="Telefone do Fornecedor..." ID="txtTelefoneFor" CssClass="form-control" runat="server" />
+                            <br />
+                           
+
+                            <br />
+
+                            <asp:Label Text="" ID="lblFornecedores" runat="server" ForeColor="Green" />
+                            <br />
+
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+
+                            <asp:Button runat="server" ID="btnCadFornecedores" CssClass="btn btn-success" Text="Salvar" OnClick="btnCadFornecedores_Click" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
