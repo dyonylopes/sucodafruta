@@ -17,19 +17,19 @@ namespace Sabor_da_Fruta
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
 
             nomeUsuario = Request.QueryString["nome"];
             nivelUsuario = Request.QueryString["nivel"];
 
-            if(nomeUsuario == null) //não deixa entrar sem login
+            if (nomeUsuario == null) //não deixa entrar sem login
             {
                 Response.Redirect("login.aspx");
             }
 
           Listar();
             //DANDO NIVEL DE PERMISSÃO AO USUARIO
-            if(nivelUsuario == "administrador")
+            if (nivelUsuario == "administrador")
             {
                 btnNovo.Enabled = true;
             }
@@ -37,7 +37,7 @@ namespace Sabor_da_Fruta
             DesabilitarCampos();
 
 
-            if(cbCategoria.Text == "")
+            if (cbCategoria.Text == "")
             {
 
                 CarregarCategorias();
@@ -71,7 +71,7 @@ namespace Sabor_da_Fruta
             }
 
 
-           
+
 
 
         }
@@ -192,7 +192,7 @@ namespace Sabor_da_Fruta
 
                 cbCategoria.Enabled = false;
                 lblMensagemOK.Text = "Não possuem categorias cadastradas !!!";
-             
+
 
 
             }
@@ -314,14 +314,14 @@ namespace Sabor_da_Fruta
             }
             else
             {
-                
+
                 lblMensagemOK.Text = "Não possuem produtos cadastrados !!!";
                 btnBuscar.Enabled = false; //se não tiver produtos cadastrados busar fica inativo
                 txtbuscar.Enabled = false;
                 grid.Visible = false;
 
 
-            }            
+            }
 
 
             con.FecharCon();
@@ -331,18 +331,18 @@ namespace Sabor_da_Fruta
         //btnsalvar
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            if(txtnome.Text =="")
+            if (txtnome.Text == "")
             {
-               lblMensagemErro.Text = "Preencha o campo Nome! 111";               
-               txtnome.Focus();
+                lblMensagemErro.Text = "Preencha o campo Nome! 111";
+                txtnome.Focus();
                 return;
 
 
 
             }
-            if(txtdescricao.Text == "")
+            if (txtdescricao.Text == "")
             {
-                lblMensagemErro.Text = "Preencha o campo Descrição!";               
+                lblMensagemErro.Text = "Preencha o campo Descrição!";
                 txtdescricao.Focus();
                 return;
 
@@ -365,7 +365,7 @@ namespace Sabor_da_Fruta
 
             Salvar();
 
-          
+
         }
 
         private void Salvar()
@@ -462,7 +462,7 @@ namespace Sabor_da_Fruta
             Listar();
             con.FecharCon();
 
-            
+
 
         }
 
@@ -502,7 +502,7 @@ namespace Sabor_da_Fruta
             }
 
             CadUsuario();
-            
+
 
         }
 
@@ -523,7 +523,7 @@ namespace Sabor_da_Fruta
 
             cmd.ExecuteNonQuery();
             lblUsuario.Text = "Salvo com Sucesso !!";
-            
+
             con.FecharCon();
 
 
@@ -542,6 +542,7 @@ namespace Sabor_da_Fruta
             }
 
             CadCategoria();
+            LimparCampos3();
         }
 
         private void CadCategoria()
@@ -564,9 +565,53 @@ namespace Sabor_da_Fruta
         }
 
 
+        /* Modal Fornecedores*/
+        protected void btnCadFornecedores_Click(object sender, EventArgs e)
+        {
+            if (txtNomeFornecedor.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Nome!  2222";
+                txtNomeFornecedor.Focus();
+                return;
 
 
-            private void LimparCampos()
+
+            }
+            if (txtTelefoneFor.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo telefone!";
+                txtTelefoneFor.Focus();
+                return;
+
+
+            }
+            CadFornecedores();
+            LimparCampos4();
+        }
+
+        private void CadFornecedores()
+        {
+            string sql;
+            MySqlCommand cmd;
+
+            con.AbrirCon();
+
+            sql = "INSERT INTO fornecedores (nome, telefone) VALUES (@nome, @telefone)";
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@nome", txtNomeFornecedor.Text);
+            cmd.Parameters.AddWithValue("@telefone", txtTelefoneFor.Text);
+
+
+            cmd.ExecuteNonQuery();
+            lblFornecedores.Text = "Salvo com Sucesso !!";
+
+            con.FecharCon();
+
+        }
+
+
+
+        private void LimparCampos()
         {
             txtnome.Text = "";
             txtdescricao.Text = "";
@@ -574,10 +619,6 @@ namespace Sabor_da_Fruta
             txtquantidade.Text = "";
             lblMensagemErro.Text = "";
             lblMensagemOK.Text = "";
-
-
-
-
         }
 
         //limpar 2
@@ -585,15 +626,31 @@ namespace Sabor_da_Fruta
         {
             txtnome2.Text = "";
             txtdescricao2.Text = "";
-            txtvalor2.Text= "";
+            txtvalor2.Text = "";
             txtquantidade2.Text = "";
             lblMensagemErro.Text = "";
             lblMensagemOK.Text = "";
 
+        }
 
+        // limpar 3
+        private void LimparCampos3()
+        {
+            txtNomeCategoria.Text = "";
+        }
 
+        // limpar 4
+        private void LimparCampos4()
+        {
+            txtNomeFornecedor.Text = "";
+            txtTelefoneFor.Text = "";
 
         }
+
+
+
+
+
 
 
 
@@ -631,7 +688,7 @@ namespace Sabor_da_Fruta
             txtdescricao.Text = "";
             txtvalor.Text = "";
             txtquantidade.Text = "";
-            
+
         }
 
 
@@ -662,7 +719,7 @@ namespace Sabor_da_Fruta
             con.AbrirCon();
             sql = "SELECT * FROM produtos where id = @id"; //parametro id recebe parametro
             cmd = new MySqlCommand(sql, con.con);
-           cmd.Parameters.AddWithValue("@id", id); //sempre tem que jogar abaixo do MySqlCommand
+            cmd.Parameters.AddWithValue("@id", id); //sempre tem que jogar abaixo do MySqlCommand
             da.SelectCommand = cmd;
             da.Fill(dt);
             txtnome.Text = dt.Rows[0][1].ToString();
@@ -670,8 +727,8 @@ namespace Sabor_da_Fruta
             txtvalor.Text = dt.Rows[0][3].ToString();   // para pegar os dados do banco e editar
             txtquantidade.Text = dt.Rows[0][4].ToString();
 
-            if(dt.Rows[0][5].ToString() != "")          //condição para linha única   
-            cbCategoria.SelectedItem.Text = dt.Rows[0][5].ToString();
+            if (dt.Rows[0][5].ToString() != "")          //condição para linha única   
+                cbCategoria.SelectedItem.Text = dt.Rows[0][5].ToString();
             if (dt.Rows[0][6].ToString() != "0")          // [] posicão da coluna
                 cbFornecedor.SelectedItem.Text = dt.Rows[0][6].ToString();
 
@@ -724,7 +781,7 @@ namespace Sabor_da_Fruta
                 return;
 
             }
-            if (txtquantidade.Text == "") 
+            if (txtquantidade.Text == "")
             {
                 lblMensagemErro.Text = "Preencha o campo Quantidade!";
                 txtquantidade.Focus();
@@ -740,7 +797,7 @@ namespace Sabor_da_Fruta
             }
 
 
-            
+
 
 
 
@@ -762,7 +819,7 @@ namespace Sabor_da_Fruta
             cmd.Parameters.AddWithValue("@categoria", cbCategoria.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@id_fornecedor", cbFornecedor.SelectedItem.Value); //relacionamento de tabelas
             cmd.Parameters.AddWithValue("@id", idproduto.Value);
-            
+
             cmd.ExecuteNonQuery();
             lblMensagemOK.Text = "Editado com Sucesso !!";
             Listar();
@@ -850,10 +907,10 @@ namespace Sabor_da_Fruta
 
 
             con.FecharCon();
-            
+
         }
 
- 
+
 
 
 
@@ -862,11 +919,11 @@ namespace Sabor_da_Fruta
 
         }
 
-    
+
 
         protected void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
     }
 }
