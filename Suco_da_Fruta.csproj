@@ -98,7 +98,6 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\CadProduto.cs" />
     <Compile Include="pagamento.aspx.cs">
       <DependentUpon>pagamento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

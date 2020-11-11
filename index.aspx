@@ -50,9 +50,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.aspx">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+                   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros
                         </a>
@@ -62,6 +60,18 @@
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalFornecedores">Fornecedores</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalProdutos">Produtos</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalUsuarios">Usuários</a>
+            </div>
+            </li>
+            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultar
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="Dropdown" />
+                        <!-- <a class="dropdown-item" href="#">Comanda</a> -->
+                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalCategorias">Categorias</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalFornecedores">Fornecedores</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalProdutosCad">Produtos</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalUsuarios">Usuários</a>
             </div>
             </li>
@@ -223,7 +233,7 @@
             <br />
             <br />
 
-            <h2>Tabela de produtos</h2>
+            <h2>Tabela de produtos</h2>  <!-- mudei para grid2 -->
 
             <div class="container">
                 <div class="gridview">
@@ -249,6 +259,19 @@
                 </div>
             </div>
         </div>
+
+
+
+
+      
+
+
+
+
+
+
+
+
 
 
 
@@ -296,8 +319,9 @@
 
                             <asp:DropDownList ID="cbCategoria2" runat="server" Width="224px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" />
                             <br />
-                            <asp:Label Text="Fornecedor" runat="server" />
                             <br />
+                            <asp:Label Text="Fornecedor" runat="server" />
+                           
                             <asp:DropDownList ID="cbFornecedor2" runat="server" Width="224px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" />
                             <br />
 
@@ -318,6 +342,8 @@
 
 
         </div>
+
+
 
 
 

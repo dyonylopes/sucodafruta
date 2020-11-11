@@ -27,7 +27,7 @@ namespace Sabor_da_Fruta
                 Response.Redirect("login.aspx");
             }
 
-            Listar();
+          Listar();
             //DANDO NIVEL DE PERMISSÃO AO USUARIO
             if(nivelUsuario == "administrador")
             {
@@ -306,6 +306,7 @@ namespace Sabor_da_Fruta
 
             if (dt.Rows.Count > 0)
             {
+
                 grid.Visible = true;
                 grid.DataSource = dt; //receber na Datatable
                 grid.DataBind(); // Atualizar dados           
