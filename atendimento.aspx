@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
 
     <script src="../css/bootstrap.css"></script>
@@ -25,7 +25,7 @@
 <body>
     <form id="form1" runat="server">
 
-         <style>
+        <style>
             body {
                 background: linear-gradient(#DCDCDC, #FFFAFA);
                 background-repeat: no-repeat;
@@ -35,9 +35,9 @@
                 color: #000000;
             }
         </style>
-      
-            
-             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="fadeIn first">
                 <img src="../imagens/sologo.png" class="logoimg" id="icon" />
             </div>
@@ -47,8 +47,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                 
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home</a>
@@ -56,17 +56,66 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
-                     
                     
-          
-            </li>
-      <li class="nav-item active">
-          <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
-      </li>
-           </ul>
- </div>
+
+
+                    </li>
+                    <li class="nav-item active">
+                        <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
+                    </li>
+                </ul>
+
+
+               
+                        <span class="form-inline my-2 my-lg-0">
+                            <asp:TextBox ID="txtbuscar" runat="server" class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search" />
+                            <asp:Button ID="btnBuscar" Text="Buscar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
+                        </span>
+                   
+            </div>
         </nav>
-      
+
+        <br />
+        <br />
+        <br />
+
+
+        <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
+
+        <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
+
+        <div class="container">
+            <div class="gridview">
+                <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
+                    <Columns>
+                        <asp:BoundField DataField="nome" HeaderText="Produto" />
+                        <asp:BoundField DataField="valor" HeaderText="Valor" />
+                        <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
+                        <asp:BoundField DataField="descricao" HeaderText="Descrição" />
+                        <asp:BoundField DataField="categoria" HeaderText="Categoria" />
+                        <asp:BoundField DataField="id_fornecedor" HeaderText="ID Fornecedor" />
+                        <asp:BoundField DataField="nomeForm" HeaderText="Fornecedor" />
+                        <asp:BoundField DataField="telefone" HeaderText="Telefone" />
+
+
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       
