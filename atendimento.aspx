@@ -37,6 +37,7 @@
         </style>
 
 
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="fadeIn first">
                 <img src="../imagens/sologo.png" class="logoimg" id="icon" />
@@ -56,7 +57,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
-                    
+
 
 
                     </li>
@@ -66,12 +67,12 @@
                 </ul>
 
 
-               
-                        <span class="form-inline my-2 my-lg-0">
-                            <asp:TextBox ID="txtbuscar" runat="server" class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search" />
-                            <asp:Button ID="btnBuscar" Text="Buscar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
-                        </span>
-                   
+
+                <span class="form-inline my-2 my-lg-0">
+                    <asp:TextBox ID="txtbuscar" runat="server" class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search" />
+                    <asp:Button ID="btnBuscar" Text="Buscar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
+                </span>
+
             </div>
         </nav>
 
@@ -79,31 +80,177 @@
         <br />
         <br />
 
+       <asp:HiddenField ID="idproduto" runat="server" />
+        <!-- para ocultar ID do produto -->
+
+        <table>
+
+            <br />
+
+
+
+            <tr>
+                <td></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+
+            </tr>
+
+
+
+
+            <tr>
+                <td>
+                    <asp:Label Text="Numero da Comanda" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtnumero" runat="server" />
+                </td>
+
+                <tr>
+                    <td>
+                        <asp:Label Text="Produto" runat="server" />
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtnome" runat="server" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label Text="Descrição" runat="server" />
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtdescricao" runat="server" />
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label Text="Valor" runat="server" />
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtvalor" runat="server" />
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label Text="Quantidade" runat="server" />
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtquantidade" runat="server" />
+
+                         <tr>
+                    <td>
+                        <asp:Label Text="Observação" runat="server" />
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtobservacao" runat="server" />
+
+                    </td>
+
+                </tr>
+
+
+
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                </tr>
+
+
+                <tr>
+
+                    <tr>
+                        <!-- Botões -->
+                        <td colspan="3">
+
+                            <asp:Button ID="btnSalvar" Text="Salvar" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnSalvar_Click" />
+
+                            <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
+                        </td>
+
+
+                    </tr>
+                    <!-- Para exigir a mensagem de aviso -->
+
+                    <tr>
+                        <td colspan="3">
+                            <asp:Label Text="" ID="Label1" runat="server" ForeColor="Green" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <asp:Label Text="" ID="Label2" runat="server" ForeColor="Red" />
+                        </td>
+                          
+                    </tr>
+                  
+        </table>
+
+        <br />
+        <br />
+
+
+
 
         <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
 
-        <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
+                    <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
+
+
 
         <div class="container">
             <div class="gridview">
-                <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
+                <asp:GridView ID="gridview1" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="gridview1_SelectedIndexChanged">
                     <Columns>
+                        <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
                         <asp:BoundField DataField="nome" HeaderText="Produto" />
+                        <asp:BoundField DataField="descricao" HeaderText="Descrição" />
                         <asp:BoundField DataField="valor" HeaderText="Valor" />
                         <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
-                        <asp:BoundField DataField="descricao" HeaderText="Descrição" />
-                        <asp:BoundField DataField="categoria" HeaderText="Categoria" />
-                        <asp:BoundField DataField="id_fornecedor" HeaderText="ID Fornecedor" />
-                        <asp:BoundField DataField="nomeForm" HeaderText="Fornecedor" />
-                        <asp:BoundField DataField="telefone" HeaderText="Telefone" />
+                        <asp:BoundField DataField="observacao" HeaderText="Observação" />
+
+                       
+                        
+                        
 
 
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
+
+
+        <div class="container">
+            <div class="gridview">
+                <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
+                    <Columns>
+
+                        <asp:BoundField DataField="nome" HeaderText="Produto" />
+                        <asp:BoundField DataField="valor" HeaderText="Valor" />
+                        <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
+                        <asp:BoundField DataField="descricao" HeaderText="Descrição" />
+
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnSelecionar" Text="Selecionar" CssClass="btn btn-outline-danger my-2 my-sm-0" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="btnSelecionar_Click" />
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
+
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
 
+       
 
 
 
@@ -118,8 +265,9 @@
 
 
 
-      
-        
+
+
+
     </form>
 </body>
 </html>

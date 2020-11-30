@@ -67,7 +67,82 @@
         </nav>
        
 
+        <asp:HiddenField ID="idproduto" runat="server" />
+        <!-- para ocultar ID do produto -->
 
+        <table>
+
+            <br />
+
+
+
+            <tr>
+                <td></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+
+            </tr>
+
+
+
+
+            <tr>
+                <td>
+                    <asp:Label Text="Numero da Comanda" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtnumero" runat="server" />
+                </td>
+
+                 <tr>
+
+                    <tr>
+                        <!-- Botões -->
+                        <td colspan="3">
+
+                            <asp:Button ID="btnBuscar" Text="Pesquisar" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnBuscar_Click" />
+
+                            <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
+                        </td>
+
+
+                    </tr>
+                    
+
+                
+
+        
+
+
+              
+                    <!-- Para exigir a mensagem de aviso -->
+
+               
+                  
+        </table>
+
+        <br />
+        <br />
+
+         <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
+
+                    <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
+
+
+         <div class="container">
+            <div class="gridview">
+                <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
+                    <Columns>
+                        <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
+                        <asp:BoundField DataField="produto" HeaderText="Produto" />
+                        <asp:BoundField DataField="valor" HeaderText="Valor" />
+                        <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
+                        <asp:BoundField DataField="valor_total" HeaderText="Valor Total" />
+
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
         
     </form>
 </body>

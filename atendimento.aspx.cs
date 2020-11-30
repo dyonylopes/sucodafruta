@@ -15,7 +15,7 @@ namespace Sabor_da_Fruta
         Int32 id;
         string nomeUsuario, nivelUsuario;
 
-    
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,7 +26,13 @@ namespace Sabor_da_Fruta
             {
                 Response.Redirect("login.aspx");
             }
+
+
+
+
+
         }
+
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -73,6 +79,60 @@ namespace Sabor_da_Fruta
 
         }
 
+        protected void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            id = Convert.ToInt32((sender as Button).CommandArgument); //pegar o ID da grid
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT * FROM produtos where id = @id"; //parametro id recebe parametro
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@id", id); //sempre tem que jogar abaixo do MySqlCommand
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            txtnome.Text = dt.Rows[0][1].ToString();
+            txtdescricao.Text = dt.Rows[0][2].ToString();
+            txtvalor.Text = dt.Rows[0][3].ToString();   // para pegar os dados do banco e editar
+            txtquantidade.Text = dt.Rows[0][4].ToString();
+
+            if (dt.Rows[0][5].ToString() != "")          //condição para linha única   
+
+                if (dt.Rows[0][6].ToString() != "0")          // [] posicão da coluna
+
+
+
+                    idproduto.Value = dt.Rows[0][0].ToString();
+
+
+
+            HabilitarCampos();
+            con.FecharCon();
+        }
+
+        private void HabilitarCampos()
+        {
+            txtnome.Enabled = false; // nome
+            txtdescricao.Enabled = false; // descricao
+            txtvalor.Enabled = false; // valor
+            txtquantidade.Enabled = true;
+
+        }
+
+        private void DesabilitarCampos()
+        {
+
+            txtnome.Enabled = false; // nome
+            txtdescricao.Enabled = false; // descricao
+            txtvalor.Enabled = false; // valor
+            txtquantidade.Enabled = false;
+
+        }
+
+
+
         private void Listar()
         {
             string sql;
@@ -116,15 +176,135 @@ namespace Sabor_da_Fruta
 
 
 
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (txtnumero.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo numero da comanda!";
+                txtnumero.Focus();
+                return;
+
+            }
+            if (txtnome.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Nome! 111";
+                txtnome.Focus();
+                return;
 
 
 
+            }
+            if (txtdescricao.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Descrição!";
+                txtdescricao.Focus();
+                return;
 
 
+            }
+            if (txtvalor.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Valor!";
+                txtvalor.Focus();
+                return;
+
+            }
+            if (txtquantidade.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Quantidade!";
+                txtquantidade.Focus();
+                return;
+
+            }
+            if (txtobservacao.Text == "")
+            {
+                lblMensagemErro.Text = "Preencha o campo Quantidade!";
+                txtobservacao.Focus();
+                return;
+
+            }
+
+            Salvar();
+
+        }
+        private void Salvar()
+        {
+            string sql;
+            MySqlCommand cmd;
+
+            con.AbrirCon();
+
+            sql = "INSERT INTO itenspedidos (numero, nome, descricao, quantidade, valor, observacao) VALUES (@numero, @nome, @descricao, @quantidade, @valor, @observacao)";
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtnumero.Text));
+            cmd.Parameters.AddWithValue("@nome", txtnome.Text);
+            cmd.Parameters.AddWithValue("@descricao", txtdescricao.Text);
+            cmd.Parameters.AddWithValue("@quantidade", txtquantidade.Text);
+            cmd.Parameters.AddWithValue("@valor", Convert.ToDouble(txtvalor.Text));
+            cmd.Parameters.AddWithValue("@observacao", txtobservacao.Text);
+
+            cmd.ExecuteNonQuery();
+            lblMensagemOK.Text = "Salvo com Sucesso !!";
+            Listarpedidos();
+            con.FecharCon();
+
+            ApagarCampos();
+        }
+        private void ApagarCampos() // médoto criado para apagar caixar depois da digitação
+        {
+            txtnumero.Text = "";
+            txtnome.Text = "";
+            txtdescricao.Text = "";
+            txtvalor.Text = "";
+            txtquantidade.Text = "";
+
+        }
+
+        protected void gridview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gridview1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Listarpedidos()
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon(); //Inner join para pegar de outras tabelas mudo o prefixo
+            sql = "SELECT id, numero, nome, descricao, quantidade, valor, observacao FROM itenspedidos order by nome asc";
+            cmd = new MySqlCommand(sql, con.con);
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+
+                gridview1.Visible = true;
+                gridview1.DataSource = dt; //receber na Datatable
+                gridview1.DataBind(); // Atualizar dados           
+
+            }
+            else
+            {
+
+                lblMensagemOK.Text = "Não possuem comandas cadastrados !!!";
+                btnBuscar.Enabled = false; //se não tiver produtos cadastrados busar fica inativo
+                txtbuscar.Enabled = false;
+                gridview1.Visible = false;
 
 
+            }
 
 
+            con.FecharCon();
+        }
 
 
 
