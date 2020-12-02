@@ -33,15 +33,6 @@ namespace Sabor_da_Fruta
         protected global::System.Web.UI.WebControls.LinkButton sair;
 
         /// <summary>
-        /// Controle idproduto.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField idproduto;
-
-        /// <summary>
         /// Controle txtnumero.
         /// </summary>
         /// <remarks>

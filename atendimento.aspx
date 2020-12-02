@@ -38,10 +38,15 @@
 
 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="fadeIn first">
                 <img src="../imagens/sologo.png" class="logoimg" id="icon" />
             </div>
+
+          
+    
+
+
 
             <h3 class="titulologo">RESTAURANTE SUCO DA FRUTA</h3>
 
@@ -51,28 +56,24 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+
+                        <span class="form-inline my-2 my-lg-0">
+                            <asp:TextBox ID="txtbuscar" runat="server" class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search" />
+                            <asp:Button ID="btnBuscar" Text="Buscar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
+                        </span>
+                       
 
 
-
-                    </li>
-                    <li class="nav-item active">
-                        <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
+                        
                     </li>
                 </ul>
 
-
-
-                <span class="form-inline my-2 my-lg-0">
-                    <asp:TextBox ID="txtbuscar" runat="server" class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search" />
-                    <asp:Button ID="btnBuscar" Text="Buscar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
-                </span>
-
+                <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
+               
+                        
+                   
             </div>
         </nav>
 
@@ -98,12 +99,24 @@
 
 
 
+            <tr>
+                    <td>
+                        <asp:Label Text="Número da Comanda" runat="server" />
+                    </td>
+                    <td colspan="4">
+                        <asp:DropDownList ID="cbComanda" runat="server" Width="124px" OnSelectedIndexChanged="cbComanda_SelectedIndexChanged"/>
+
+
+                    </td>
+
+                </tr>
+
 
             <tr>
                 <td>
                     <asp:Label Text="Numero da Comanda" runat="server" />
                 </td>
-                <td colspan="3">
+                <td colspan="4">
                     <asp:TextBox ID="txtnumero" runat="server" />
                 </td>
 
@@ -111,7 +124,7 @@
                     <td>
                         <asp:Label Text="Produto" runat="server" />
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                         <asp:TextBox ID="txtnome" runat="server" />
                     </td>
 
@@ -120,7 +133,7 @@
                     <td>
                         <asp:Label Text="Descrição" runat="server" />
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                         <asp:TextBox ID="txtdescricao" runat="server" />
 
                     </td>
@@ -130,7 +143,7 @@
                     <td>
                         <asp:Label Text="Valor" runat="server" />
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                         <asp:TextBox ID="txtvalor" runat="server" />
 
                     </td>
@@ -138,42 +151,59 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label Text="Quantidade" runat="server" />
+                        <asp:Label ID="lblQuantidade2" Text="Quantidade:" runat="server" />            
+
+
                     </td>
                     <td colspan="3">
-                        <asp:TextBox ID="txtquantidade" runat="server" />
+                      
 
-                         <tr>
+                        <asp:DropDownList ID="cbQuantidade" runat="server">
+                        <asp:ListItem Value="01" Selected="true">01</asp:ListItem> 
+                        <asp:ListItem Value="02">02</asp:ListItem>
+                        <asp:ListItem Value="03">03</asp:ListItem>
+                        <asp:ListItem Value="04">04</asp:ListItem>
+                        <asp:ListItem Value="05">05</asp:ListItem>
+                        <asp:ListItem Value="06">06</asp:ListItem>
+                        <asp:ListItem Value="07">07</asp:ListItem>
+                        <asp:ListItem Value="08">08</asp:ListItem>
+                        <asp:ListItem Value="09">09</asp:ListItem>
+                        <asp:ListItem Value="10">10</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+
+                </tr>
+
+                  <tr>
                     <td>
                         <asp:Label Text="Observação" runat="server" />
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                         <asp:TextBox ID="txtobservacao" runat="server" />
 
                     </td>
 
                 </tr>
 
+                   <tr>
+
+                       <td></td>
+
+                   </tr>
 
 
 
-                    </td>
-
-                </tr>
-
-                <tr>
-                </tr>
-
-
-                <tr>
 
                     <tr>
                         <!-- Botões -->
-                        <td colspan="3">
+                        <td colspan="4">
 
                             <asp:Button ID="btnSalvar" Text="Salvar" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnSalvar_Click" />
+                           
+                            </td><td>
+                            
+                             <asp:Button ID="btnLimpar" Text="Limpar" runat="server" CssClass="btn btn-danger my-2 my-sm-0" OnClick="btnLimpar_Click" />
 
-                            <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
                         </td>
 
 
@@ -240,7 +270,7 @@
 
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnSelecionar" Text="Selecionar" CssClass="btn btn-outline-danger my-2 my-sm-0" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="btnSelecionar_Click" />
+                                <asp:Button ID="btnSelecionar" Text="Add" CssClass="btn btn-outline-danger my-2 my-sm-0" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="btnSelecionar_Click" />
                             </ItemTemplate>
 
                         </asp:TemplateField>

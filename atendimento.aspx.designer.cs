@@ -24,15 +24,6 @@ namespace Sabor_da_Fruta
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Controle sair.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton sair;
-
-        /// <summary>
         /// Controle txtbuscar.
         /// </summary>
         /// <remarks>
@@ -51,6 +42,15 @@ namespace Sabor_da_Fruta
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
+        /// Controle sair.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton sair;
+
+        /// <summary>
         /// Controle idproduto.
         /// </summary>
         /// <remarks>
@@ -58,6 +58,15 @@ namespace Sabor_da_Fruta
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField idproduto;
+
+        /// <summary>
+        /// Controle cbComanda.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbComanda;
 
         /// <summary>
         /// Controle txtnumero.
@@ -96,13 +105,22 @@ namespace Sabor_da_Fruta
         protected global::System.Web.UI.WebControls.TextBox txtvalor;
 
         /// <summary>
-        /// Controle txtquantidade.
+        /// Controle lblQuantidade2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtquantidade;
+        protected global::System.Web.UI.WebControls.Label lblQuantidade2;
+
+        /// <summary>
+        /// Controle cbQuantidade.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbQuantidade;
 
         /// <summary>
         /// Controle txtobservacao.
@@ -123,13 +141,13 @@ namespace Sabor_da_Fruta
         protected global::System.Web.UI.WebControls.Button btnSalvar;
 
         /// <summary>
-        /// Controle btnLogin.
+        /// Controle btnLimpar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Button btnLimpar;
 
         /// <summary>
         /// Controle Label1.

@@ -13,19 +13,19 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-        string nomeUsuario, nivelUsuario;
+      //  string nomeUsuario, nivelUsuario;
 
       
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            nomeUsuario = Request.QueryString["nome"];
-            nivelUsuario = Request.QueryString["nivel"];
+          //  nomeUsuario = Request.QueryString["nome"];
+         //   nivelUsuario = Request.QueryString["nivel"];
 
-            if (nomeUsuario == null) //não deixa entrar sem login
-            {
-                Response.Redirect("login.aspx");
-            }
+          //  if (nomeUsuario == null) //não deixa entrar sem login
+          //  {
+          //      Response.Redirect("login.aspx");
+         //   }
 
 
         }
@@ -49,9 +49,9 @@ namespace Sabor_da_Fruta
             DataTable dt = new DataTable(); //para receber dados do mysql
 
             con.AbrirCon();
-            sql = "SELECT c.numero, group_concat(nome separator ' , ') as produto, i.valor, i.quantidade, SUM((quantidade * valor)) As valor_total FROM itenspedidos i INNER JOIN comanda c USING(NUMERO) GROUP BY C.NUMERO";
+            sql = "SELECT numero, group_concat(nome separator ' , ') as produto, valor, quantidade, SUM((quantidade * valor)) As valor_total FROM itenspedidos  where numero LIKE @numero group by numero";
             cmd = new MySqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@numero", btnBuscar.Text); 
+            cmd.Parameters.AddWithValue("@numero",txtnumero.Text); 
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -65,7 +65,7 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Este Produto não foi encontrado !!!";
+                lblMensagemOK.Text = "Comanda não encontrada!!!";
                 Listar();
 
             }

@@ -13,21 +13,24 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-        string nomeUsuario, nivelUsuario;
+      //  string nomeUsuario, nivelUsuario;
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            nomeUsuario = Request.QueryString["nome"];
-            nivelUsuario = Request.QueryString["nivel"];
+            // nomeUsuario = Request.QueryString["nome"];
+            //  nivelUsuario = Request.QueryString["nivel"];
+            //
+            //  if (nomeUsuario == null) //não deixa entrar sem login
+            //   {
+            //      Response.Redirect("login.aspx");
+            // }
 
-            if (nomeUsuario == null) //não deixa entrar sem login
-            {
-                Response.Redirect("login.aspx");
-            }
 
 
+
+           
 
 
 
@@ -58,7 +61,8 @@ namespace Sabor_da_Fruta
             {
                 grid.Visible = true;
                 grid.DataSource = dt; //receber na Datatable
-                grid.DataBind(); // Atualizar dados           
+                grid.DataBind(); // Atualizar dados     
+                CarregarNumComanda();
 
             }
             else
@@ -70,6 +74,7 @@ namespace Sabor_da_Fruta
             }
 
 
+            CarregarNumComanda();
             con.FecharCon();
 
         }
@@ -96,7 +101,7 @@ namespace Sabor_da_Fruta
             txtnome.Text = dt.Rows[0][1].ToString();
             txtdescricao.Text = dt.Rows[0][2].ToString();
             txtvalor.Text = dt.Rows[0][3].ToString();   // para pegar os dados do banco e editar
-            txtquantidade.Text = dt.Rows[0][4].ToString();
+            cbQuantidade.Text = dt.Rows[0][4].ToString();
 
             if (dt.Rows[0][5].ToString() != "")          //condição para linha única   
 
@@ -117,7 +122,7 @@ namespace Sabor_da_Fruta
             txtnome.Enabled = false; // nome
             txtdescricao.Enabled = false; // descricao
             txtvalor.Enabled = false; // valor
-            txtquantidade.Enabled = true;
+            cbQuantidade.Enabled = true;
 
         }
 
@@ -127,7 +132,7 @@ namespace Sabor_da_Fruta
             txtnome.Enabled = false; // nome
             txtdescricao.Enabled = false; // descricao
             txtvalor.Enabled = false; // valor
-            txtquantidade.Enabled = false;
+            cbQuantidade.Enabled = false;
 
         }
 
@@ -178,13 +183,7 @@ namespace Sabor_da_Fruta
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtnumero.Text == "")
-            {
-                lblMensagemErro.Text = "Preencha o campo numero da comanda!";
-                txtnumero.Focus();
-                return;
-
-            }
+            
             if (txtnome.Text == "")
             {
                 lblMensagemErro.Text = "Preencha o campo Nome! 111";
@@ -209,10 +208,10 @@ namespace Sabor_da_Fruta
                 return;
 
             }
-            if (txtquantidade.Text == "")
+            if (cbQuantidade.Text == "")
             {
                 lblMensagemErro.Text = "Preencha o campo Quantidade!";
-                txtquantidade.Focus();
+                cbQuantidade.Focus();
                 return;
 
             }
@@ -236,10 +235,12 @@ namespace Sabor_da_Fruta
 
             sql = "INSERT INTO itenspedidos (numero, nome, descricao, quantidade, valor, observacao) VALUES (@numero, @nome, @descricao, @quantidade, @valor, @observacao)";
             cmd = new MySqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtnumero.Text));
+            cmd.Parameters.AddWithValue("@numero",  Convert.ToInt32(cbComanda.SelectedItem.Text));
+            //  cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtnumero.Text));
+           // cmd.Parameters.AddWithValue("@numero", cbComanda.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@nome", txtnome.Text);
             cmd.Parameters.AddWithValue("@descricao", txtdescricao.Text);
-            cmd.Parameters.AddWithValue("@quantidade", txtquantidade.Text);
+            cmd.Parameters.AddWithValue("@quantidade", cbQuantidade.Text);
             cmd.Parameters.AddWithValue("@valor", Convert.ToDouble(txtvalor.Text));
             cmd.Parameters.AddWithValue("@observacao", txtobservacao.Text);
 
@@ -247,7 +248,7 @@ namespace Sabor_da_Fruta
             lblMensagemOK.Text = "Salvo com Sucesso !!";
             Listarpedidos();
             con.FecharCon();
-
+            CarregarNumComanda();
             ApagarCampos();
         }
         private void ApagarCampos() // médoto criado para apagar caixar depois da digitação
@@ -256,7 +257,7 @@ namespace Sabor_da_Fruta
             txtnome.Text = "";
             txtdescricao.Text = "";
             txtvalor.Text = "";
-            txtquantidade.Text = "";
+            cbQuantidade.Text = "";
 
         }
 
@@ -269,6 +270,52 @@ namespace Sabor_da_Fruta
         {
 
         }
+
+
+        private void CarregarNumComanda()
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT * FROM comanda order by numero asc";
+            cmd = new MySqlCommand(sql, con.con);
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+
+                cbComanda.Enabled = true;
+                cbComanda.DataSource = dt; //receber na Datatable
+                cbComanda.DataTextField = "numero";
+                cbComanda.DataValueField = "id_comanda";
+                cbComanda.DataBind(); // Atualizar dados           
+
+            }
+            else
+            {
+
+                cbComanda.Enabled = false;
+                lblMensagemOK.Text = "Não possuem comandas cadastradas !!!";
+
+
+
+            }
+
+
+
+
+
+
+            con.FecharCon();
+        }
+
+
+
+
 
         private void Listarpedidos()
         {
@@ -306,19 +353,15 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        protected void cbComanda_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
+        }
     }
 
 

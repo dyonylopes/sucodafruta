@@ -13,26 +13,26 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-        string nomeUsuario, nivelUsuario;
+       // string nomeUsuario, nivelUsuario;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
 
-            nomeUsuario = Request.QueryString["nome"];
-            nivelUsuario = Request.QueryString["nivel"];
+          // // nomeUsuario = Request.QueryString["nome"];
+          //  nivelUsuario = Request.QueryString["nivel"];
 
-            if (nomeUsuario == null) //não deixa entrar sem login
-            {
-                Response.Redirect("login.aspx");
-            }
+        //    if (nomeUsuario == null) //não deixa entrar sem login
+           // {
+           //     Response.Redirect("login.aspx");
+          //  }
 
           Listar();
             //DANDO NIVEL DE PERMISSÃO AO USUARIO
-            if (nivelUsuario == "administrador")
-            {
-                btnNovo.Enabled = true;
-            }
+          //  if (nivelUsuario == "administrador")
+          //  {
+          //      btnNovo.Enabled = true;
+           // }
 
             DesabilitarCampos();
 
@@ -603,11 +603,52 @@ namespace Sabor_da_Fruta
 
 
             cmd.ExecuteNonQuery();
-            lblFornecedores.Text = "Salvo com Sucesso !!";
+            
+            txtNumComanda.Text = "";
+            con.FecharCon();
+
+        }
+
+
+        private void CadComanda() //cadastro de comandas
+        {
+            string sql;
+            MySqlCommand cmd;
+
+            con.AbrirCon();
+
+            sql = " INSERT INTO  comanda (numero) VALUES (@numero)";
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtNumComanda.Text));
+         
+
+
+            cmd.ExecuteNonQuery();
+            txtNumComanda.Text = "";
+            lblComanda.Text = "Salvo com Sucesso !!";
 
             con.FecharCon();
 
         }
+
+
+        protected void btnSalvarCom_Click(object sender, EventArgs e)
+        {
+
+            
+            if (txtNumComanda.Text == "")
+            {
+                lblComanda.Text = "Insira o Número da Comanda para Cadastro";
+                txtNumComanda.Focus();
+                return;
+            }
+            CadComanda();
+
+
+
+
+        }
+
 
 
 
@@ -925,5 +966,7 @@ namespace Sabor_da_Fruta
         {
 
         }
+
+      
     }
 }

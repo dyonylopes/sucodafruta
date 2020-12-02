@@ -55,7 +55,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="Dropdown" />
-                        <!-- <a class="dropdown-item" href="#">Comanda</a> -->
+                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalComandas">Comandas</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalCategorias">Categorias</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalFornecedores">Fornecedores</a>
                         <div class="dropdown-divider"></div>
@@ -317,12 +318,12 @@
 
                             <asp:Label Text="Categoria" runat="server" />
 
-                            <asp:DropDownList ID="cbCategoria2" runat="server" Width="224px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" />
+                            <asp:DropDownList ID="cbCategoria2" runat="server" Width="300px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" Height="17px" />
                             <br />
                             <br />
                             <asp:Label Text="Fornecedor" runat="server" />
                            
-                            <asp:DropDownList ID="cbFornecedor2" runat="server" Width="224px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" />
+                            <asp:DropDownList ID="cbFornecedor2" runat="server" Width="300px" OnSelectedIndexChanged="cbCategoria_SelectedIndexChanged" Height="16px" />
                             <br />
 
                         </div>
@@ -480,6 +481,45 @@
                 </div>
             </div>
         </div>
+
+
+
+          <!-- Modal Comandass -->
+        <div class="border border-dark">
+            <div class="modal" id="ModalComandas">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cadastro de Comandas</h4>
+                           
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+
+                            <asp:TextBox placeholder="Numero da Comanda..." ID="txtNumComanda" CssClass="form-control" runat="server" />
+                                                  
+                        </div>
+                         <br />
+
+                            <asp:Label Text="" ID="lblComanda" runat="server" ForeColor="Green" />
+                            <br />
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+
+                            <asp:Button runat="server" ID="btnSalvarCom" CssClass="btn btn-success" Text="Salvar" OnClick="btnSalvarCom_Click" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
 
 

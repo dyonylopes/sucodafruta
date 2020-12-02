@@ -58,7 +58,7 @@
                      
                     
           
-            </li>
+           
       <li class="nav-item active">
           <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
       </li>
@@ -67,7 +67,7 @@
         </nav>
        
 
-        <asp:HiddenField ID="idproduto" runat="server" />
+       
         <!-- para ocultar ID do produto -->
 
         <table>
@@ -94,7 +94,7 @@
                     <asp:TextBox ID="txtnumero" runat="server" />
                 </td>
 
-                 <tr>
+                 </tr>
 
                     <tr>
                         <!-- Botões -->
@@ -126,7 +126,7 @@
 
          <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
 
-                    <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
+         <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
 
 
          <div class="container">
