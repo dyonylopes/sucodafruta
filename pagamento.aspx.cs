@@ -13,19 +13,19 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-      //  string nomeUsuario, nivelUsuario;
+        string nomeUsuario, nivelUsuario;
 
-      
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-          //  nomeUsuario = Request.QueryString["nome"];
-         //   nivelUsuario = Request.QueryString["nivel"];
+            nomeUsuario = Request.QueryString["nome"];
+            nivelUsuario = Request.QueryString["nivel"];
 
-          //  if (nomeUsuario == null) //não deixa entrar sem login
-          //  {
-          //      Response.Redirect("login.aspx");
-         //   }
+            if (nomeUsuario == null) //não deixa entrar sem login
+            {
+                Response.Redirect("login.aspx");
+            }
 
 
         }
@@ -34,6 +34,7 @@ namespace Sabor_da_Fruta
         {
             lblMensagemOK.Text = "";
             Buscar();
+            ApagarCampos();
         }
 
         protected void grid_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,9 +50,9 @@ namespace Sabor_da_Fruta
             DataTable dt = new DataTable(); //para receber dados do mysql
 
             con.AbrirCon();
-            sql = "SELECT numero, group_concat(nome separator ' , ') as produto, valor, quantidade, SUM((quantidade * valor)) As valor_total FROM itenspedidos  where numero LIKE @numero group by numero";
+            sql = "SELECT numero, group_concat(nome separator ' , ') as produto, SUM((quantidade * valor)) As valor_total FROM itenspedidos  where numero LIKE @numero GROUP BY NUMERO";
             cmd = new MySqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@numero",txtnumero.Text); 
+            cmd.Parameters.AddWithValue("@numero", txtnumero.Text);
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -65,7 +66,7 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Comanda não encontrada!!!";
+                lblMensagemOK.Text = "Este Produto não foi encontrado !!!";
                 Listar();
 
             }
@@ -74,6 +75,12 @@ namespace Sabor_da_Fruta
             con.FecharCon();
 
         }
+
+
+
+
+
+
 
         private void Listar()
         {
@@ -107,6 +114,63 @@ namespace Sabor_da_Fruta
 
 
             con.FecharCon();
+        }
+
+        protected void btnbuscarcomanda_Click(object sender, EventArgs e)
+        {
+            lblMensagemOK.Text = "";
+            Buscarcomanda();
+            ApagarCampos();
+        }
+
+
+        private void Buscarcomanda() //método buscarcomanda
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT id, numero, nome, descricao, quantidade, valor, observacao, SUM((quantidade * valor)) as Valor_Total FROM itenspedidos where numero LIKE @numero GROUP BY id"; //LIKE É VALOR APROXIMADO
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@numero", txtbuscarcomanda.Text + "%"); // "%" CONCATENA VALOR APROXIMADO.
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                gridview1.Visible = true;
+                gridview1.DataSource = dt; //receber na Datatable
+                gridview1.DataBind(); // Atualizar dados           
+
+            }
+            else
+            {
+
+                lblMensagemOK.Text = "Este Produto não foi encontrado !!!";
+
+
+            }
+
+
+            con.FecharCon();
+
+        }
+
+        protected void gridview1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void ApagarCampos() // médoto criado para apagar caixar depois da digitação
+        {
+            txtbuscarcomanda.Text = "";
+            txtnumero.Text = "";
+
+
         }
 
 

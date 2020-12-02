@@ -13,19 +13,19 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-      //  string nomeUsuario, nivelUsuario;
+       string nomeUsuario, nivelUsuario;
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // nomeUsuario = Request.QueryString["nome"];
-            //  nivelUsuario = Request.QueryString["nivel"];
-            //
-            //  if (nomeUsuario == null) //não deixa entrar sem login
-            //   {
-            //      Response.Redirect("login.aspx");
-            // }
+            nomeUsuario = Request.QueryString["nome"];
+             nivelUsuario = Request.QueryString["nivel"];
+            
+             if (nomeUsuario == null) //não deixa entrar sem login
+              {
+                  Response.Redirect("login.aspx");
+            }
 
 
 

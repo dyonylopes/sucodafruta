@@ -36,38 +36,46 @@
             }
         </style>
       
-             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             
+                    
+       
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="fadeIn first">
                 <img src="../imagens/sologo.png" class="logoimg" id="icon" />
             </div>
 
+          
+   
             <h3 class="titulologo">RESTAURANTE SUCO DA FRUTA</h3>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                 
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                     
-                    
-          
-           
-      <li class="nav-item active">
-          <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
-      </li>
-           </ul>
- </div>
-        </nav>
-       
 
-       
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    
+                    <li class="nav-item active">
+
+                        <span class="form-inline my-2 my-lg-0">
+                            <asp:TextBox ID="txtbuscarcomanda" runat="server" class="form-control mr-sm-2" placeholder="Numero da Comanda" aria-label="Search" />
+                            <asp:Button ID="btnbuscarcomanda" Text="Consultar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
+                        </span>
+                       
+
+
+                        
+                    </li>
+                </ul>
+
+                <asp:LinkButton ID="LinkButton1" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
+               
+                        
+                   
+            </div>
+        </nav>
+
+        <asp:HiddenField ID="idproduto" runat="server" />
         <!-- para ocultar ID do produto -->
 
         <table>
@@ -94,13 +102,13 @@
                     <asp:TextBox ID="txtnumero" runat="server" />
                 </td>
 
-                 </tr>
+                 <tr>
 
                     <tr>
                         <!-- Botões -->
                         <td colspan="3">
 
-                            <asp:Button ID="btnBuscar" Text="Pesquisar" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnBuscar_Click" />
+                            <asp:Button ID="btnBuscar" Text="Pesquisar" placeholder="Numero da comanda" aria-label="Search" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnBuscar_Click" />
 
                             <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
                         </td>
@@ -109,12 +117,15 @@
                     </tr>
                     
 
-                
+                </tr>
+                </tr>
+        <tr>
+                     <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
 
-        
+                    <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
 
 
-              
+              </tr>
                     <!-- Para exigir a mensagem de aviso -->
 
                
@@ -124,25 +135,67 @@
         <br />
         <br />
 
-         <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
-
-         <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
 
 
+
+
+
+
+
+
+
+         
+
+       
+
+
+
+
+        <!-- gridview pagamento -->
          <div class="container">
             <div class="gridview">
                 <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
+                  
                     <Columns>
                         <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
+                        
                         <asp:BoundField DataField="produto" HeaderText="Produto" />
-                        <asp:BoundField DataField="valor" HeaderText="Valor" />
-                        <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
+
                         <asp:BoundField DataField="valor_total" HeaderText="Valor Total" />
+                       
+                       
+                    
+                              
+                         
+                            
 
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
+        
+
+
+         <!-- gridview buscar pedidos da comanda -->
+
+        <div class="container">
+            <div class="gridview">
+                <asp:GridView ID="gridview1" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="gridview1_SelectedIndexChanged">
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="Numero do Pedido" />
+                        <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
+                        <asp:BoundField DataField="nome" HeaderText="Produto" />
+                         <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
+                        <asp:BoundField DataField="valor" HeaderText="Valor" />   
+                        <asp:BoundField DataField="observacao" HeaderText="Observação" />  
+                        <asp:BoundField DataField="valor_total" HeaderText="Valor Total" />
+                         
+                                
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+
         
     </form>
 </body>
