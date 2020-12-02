@@ -57,11 +57,7 @@
                     
                     <li class="nav-item active">
 
-                        <span class="form-inline my-2 my-lg-0">
-                            <asp:TextBox ID="txtbuscarcomanda" runat="server" class="form-control mr-sm-2" placeholder="Numero da Comanda" aria-label="Search" />
-                            <asp:Button ID="btnbuscarcomanda" Text="Consultar" runat="server" OnClick="btnBuscar_Click" class="btn btn-outline-success my-2 my-sm-0" />
-                        </span>
-                       
+                    
 
 
                         
@@ -119,19 +115,22 @@
 
                 </tr>
                 </tr>
-        <tr>
-                     <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
-
-                    <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
-
-
-              </tr>
-                    <!-- Para exigir a mensagem de aviso -->
+       
+           
 
                
                   
         </table>
 
+        <br />
+         <div class="container">
+                     <asp:Label Text="" ID="lblMensagemOK" runat="server" CssClass="text-center" ForeColor="Green" />
+
+                    <asp:Label Text="" ID="lblMensagemErro" runat="server" CssClass="text-center" ForeColor="Red" />
+
+            </div>
+           
+                    <!-- Para exigir a mensagem de aviso -->
         <br />
         <br />
 
@@ -174,7 +173,8 @@
             </div>
         </div>
         
-
+         <br />
+        <br />
 
          <!-- gridview buscar pedidos da comanda -->
 
@@ -182,8 +182,9 @@
             <div class="gridview">
                 <asp:GridView ID="gridview1" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="gridview1_SelectedIndexChanged">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="Numero do Pedido" />
+                        
                         <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
+                        <asp:BoundField DataField="id" HeaderText="Numero do Pedido" />
                         <asp:BoundField DataField="nome" HeaderText="Produto" />
                          <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
                         <asp:BoundField DataField="valor" HeaderText="Valor" />   

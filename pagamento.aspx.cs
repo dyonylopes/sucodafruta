@@ -34,6 +34,7 @@ namespace Sabor_da_Fruta
         {
             lblMensagemOK.Text = "";
             Buscar();
+            Buscarcomanda();
             ApagarCampos();
         }
 
@@ -66,7 +67,7 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Este Produto não foi encontrado !!!";
+                lblMensagemOK.Text = "Esta Comanda não foi encontrado !!!";
                 Listar();
 
             }
@@ -116,14 +117,7 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
-        protected void btnbuscarcomanda_Click(object sender, EventArgs e)
-        {
-            lblMensagemOK.Text = "";
-            Buscarcomanda();
-            ApagarCampos();
-        }
-
-
+    
         private void Buscarcomanda() //método buscarcomanda
         {
             string sql;
@@ -134,7 +128,7 @@ namespace Sabor_da_Fruta
             con.AbrirCon();
             sql = "SELECT id, numero, nome, descricao, quantidade, valor, observacao, SUM((quantidade * valor)) as Valor_Total FROM itenspedidos where numero LIKE @numero GROUP BY id"; //LIKE É VALOR APROXIMADO
             cmd = new MySqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@numero", txtbuscarcomanda.Text + "%"); // "%" CONCATENA VALOR APROXIMADO.
+            cmd.Parameters.AddWithValue("@numero", txtnumero.Text); // "%" CONCATENA VALOR APROXIMADO.
             da.SelectCommand = cmd;
             da.Fill(dt);
 
@@ -148,7 +142,7 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Este Produto não foi encontrado !!!";
+                lblMensagemOK.Text = "Esta Comanda não foi encontrado !!!";
 
 
             }
@@ -167,7 +161,7 @@ namespace Sabor_da_Fruta
 
         private void ApagarCampos() // médoto criado para apagar caixar depois da digitação
         {
-            txtbuscarcomanda.Text = "";
+         
             txtnumero.Text = "";
 
 
