@@ -619,10 +619,7 @@ namespace Sabor_da_Fruta
 
             sql = " INSERT INTO  comanda (numero) VALUES (@numero)";
             cmd = new MySqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtNumComanda.Text));
-         
-
-
+            cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtNumComanda.Text));       
             cmd.ExecuteNonQuery();
             txtNumComanda.Text = "";
             lblComanda.Text = "Salvo com Sucesso !!";
