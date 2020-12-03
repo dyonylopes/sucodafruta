@@ -207,12 +207,12 @@
 
                     <tr>
                         <td colspan="3">
-                            <asp:Label Text="" ID="Label1" runat="server" ForeColor="Green" />
+                            <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <asp:Label Text="" ID="Label2" runat="server" ForeColor="Red" />
+                            <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
                         </td>
                           
                     </tr>
@@ -224,12 +224,7 @@
 
 
 
-        <div class="container">
-        <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
-
-                    <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
-
-        </div>
+       
 
         <div class="container">
             <div class="gridview">

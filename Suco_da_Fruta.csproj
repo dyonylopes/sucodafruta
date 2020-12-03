@@ -73,6 +73,7 @@
     <Content Include="login.aspx" />
     <Content Include="Mostrar.js" />
     <Content Include="pagamento.aspx" />
+    <Content Include="relatorios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +107,13 @@
       <DependentUpon>pagamento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="relatorios.aspx.cs">
+      <DependentUpon>relatorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="relatorios.aspx.designer.cs">
+      <DependentUpon>relatorios.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

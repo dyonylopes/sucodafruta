@@ -178,23 +178,30 @@
 
                     </tr>
                     
+            <tr>
 
-                </tr>
-                </tr>
+            </tr>
+               <tr>
+
+               </tr>
        
-           
+           <tr>
+                    <td colspan="3">
+                        <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
+                    </td>
+                </tr>
 
                
                   
         </table>
 
         <br />
-         <div class="container">
-                     <asp:Label Text="" ID="lblMensagemOK" runat="server" CssClass="text-center" ForeColor="Green" />
-
-                    <asp:Label Text="" ID="lblMensagemErro" runat="server" CssClass="text-center" ForeColor="Red" />
-
-            </div>
+         
            
                     <!-- Para exigir a mensagem de aviso -->
         <br />
@@ -230,12 +237,7 @@
                        
                        
                     
-                         <asp:TemplateField>
-                   <ItemTemplate>
-                   <asp:Button ID="btnSelectPag" Text="Selecionar" CssClass="btn btn-outline-danger my-2 my-sm-0"  runat="server"  OnClick="btnSelectPag_Click" /> <!-- Colocar o código do comand  argument -->
-                    </ItemTemplate>
-
-  </asp:TemplateField>
+                   
 
 
                               

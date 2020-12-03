@@ -63,7 +63,7 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Esta Comanda não foi encontrado !!!";
+                lblMensagemErro.Text = "Esta Comanda não foi encontrado !!!";
                 Listar();
 
             }
@@ -97,8 +97,8 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Este comanda não foi encontrado !!!";
-               
+                lblMensagemErro.Text = "Esta comanda não foi encontrado !!!";
+                Listar();
 
             }
 
@@ -108,10 +108,7 @@ namespace Sabor_da_Fruta
         }
 
 
-        protected void btnSelectPag_Click(object sender, EventArgs e) //botão selecionar pagamento
-        {
-
-        }
+      
 
       
 
@@ -139,7 +136,7 @@ namespace Sabor_da_Fruta
             else
             {
 
-                lblMensagemOK.Text = "Não possuem produtos cadastrados !!!";
+                lblMensagemErro.Text = "Não possuem comandas ativas !!!";
      
                 grid.Visible = false;
 
@@ -232,7 +229,7 @@ namespace Sabor_da_Fruta
             MySqlCommand cmd;
 
             con.AbrirCon();
-            sql = "INSERT INTO pedidos ( numero, nome, descricao, quantidade, valor, observacao, datapedido) VALUES (@numero, @nome, @descricao, @quantidade, @valor, @observacao,now())";
+            sql = "INSERT INTO pedidos (numero, nome, descricao, quantidade, valor, observacao, datapedido) VALUES (@numero, @nome, @descricao, @quantidade, @valor, @observacao,now())";
             cmd = new MySqlCommand(sql, con.con);
             cmd.Parameters.AddWithValue("@numero", txtnumero.Text);
             //  cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtnumero.Text));
@@ -249,7 +246,7 @@ namespace Sabor_da_Fruta
 
             btnSalvar.Enabled = true;
             
-            ApagarCampos1();
+            
 
         }
 
