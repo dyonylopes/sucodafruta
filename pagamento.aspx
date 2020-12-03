@@ -98,7 +98,68 @@
                     <asp:TextBox ID="txtnumero" runat="server" />
                 </td>
 
-                 <tr>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label Text="Nome do Produto" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtnome" runat="server" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label Text="Descrição" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtdescricao" runat="server" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label Text="Quantidade" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtquantidade" runat="server" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label Text="Valor" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtvalor" runat="server" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label Text="Observação" runat="server" />
+                </td>
+                <td colspan="3">
+                    <asp:TextBox ID="txtobservacao" runat="server" />
+                </td>
+
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <tr>
                         <!-- Botões -->
@@ -164,6 +225,14 @@
                        
                        
                     
+                         <asp:TemplateField>
+                   <ItemTemplate>
+                   <asp:Button ID="btnSelectPag" Text="Selecionar" CssClass="btn btn-outline-danger my-2 my-sm-0"  runat="server"  OnClick="btnSelectPag_Click" /> <!-- Colocar o código do comand  argument -->
+                    </ItemTemplate>
+
+  </asp:TemplateField>
+
+
                               
                          
                             
@@ -190,6 +259,15 @@
                         <asp:BoundField DataField="valor" HeaderText="Valor" />   
                         <asp:BoundField DataField="observacao" HeaderText="Observação" />  
                         <asp:BoundField DataField="valor_total" HeaderText="Valor Total" />
+
+
+                         <asp:TemplateField>
+                   <ItemTemplate>
+                   <asp:Button ID="btnSelectPed" Text="Selecionar" CssClass="btn btn-outline-danger my-2 my-sm-0"  runat="server" CommandArgument='<%# Eval("id") %>' OnClick="btnSelectPed_Click"  />  <!-- Colocar o código do comand  argument -->
+                    </ItemTemplate>
+
+  </asp:TemplateField>
+
                          
                                 
                     </Columns>

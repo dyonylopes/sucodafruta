@@ -13,19 +13,19 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-        string nomeUsuario, nivelUsuario;
+       // string nomeUsuario, nivelUsuario;
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            nomeUsuario = Request.QueryString["nome"];
-            nivelUsuario = Request.QueryString["nivel"];
+          //  nomeUsuario = Request.QueryString["nome"];
+          //  nivelUsuario = Request.QueryString["nivel"];
 
-            if (nomeUsuario == null) //não deixa entrar sem login
-            {
-                Response.Redirect("login.aspx");
-            }
+          //  if (nomeUsuario == null) //não deixa entrar sem login
+          //  {
+           //     Response.Redirect("login.aspx");
+           // }
 
 
         }
@@ -38,11 +38,7 @@ namespace Sabor_da_Fruta
             ApagarCampos();
         }
 
-        protected void grid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void Buscar() //método buscar
         {
             string sql;
@@ -77,6 +73,11 @@ namespace Sabor_da_Fruta
 
         }
 
+
+        protected void btnSelectPag_Click(object sender, EventArgs e) //botão selecionar pagamento
+        {
+            
+        }
 
 
 
@@ -152,6 +153,38 @@ namespace Sabor_da_Fruta
 
         }
 
+
+        protected void btnSelectPed_Click(object sender, EventArgs e) //botão selecionar pagamento
+        {
+
+            id = Convert.ToInt32((sender as Button).CommandArgument); //pegar o ID da grid
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon();
+            sql = "SELECT * FROM itenspedidos where id = @id"; //parametro id recebe parametro
+            cmd = new MySqlCommand(sql, con.con);
+            cmd.Parameters.AddWithValue("@id", id); //sempre tem que jogar abaixo do MySqlCommand
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+            txtnumero.Text = dt.Rows[0][1].ToString();
+            txtnome.Text = dt.Rows[0][2].ToString();
+            txtdescricao.Text = dt.Rows[0][3].ToString();
+            txtquantidade.Text = dt.Rows[0][4].ToString();   // para pegar os dados do banco e editar
+            txtvalor.Text = dt.Rows[0][5].ToString();
+            txtobservacao.Text = dt.Rows[0][6].ToString();
+
+            idproduto.Value = dt.Rows[0][0].ToString();
+
+
+            con.FecharCon();
+
+
+        }
+
+
         protected void gridview1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -167,57 +200,10 @@ namespace Sabor_da_Fruta
 
         }
 
+        protected void grid_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
     }
 
 }

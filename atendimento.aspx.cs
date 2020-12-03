@@ -13,19 +13,21 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-       string nomeUsuario, nivelUsuario;
+        private bool dataEntrada;
+
+        // string nomeUsuario, nivelUsuario;
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            nomeUsuario = Request.QueryString["nome"];
-             nivelUsuario = Request.QueryString["nivel"];
+         //   nomeUsuario = Request.QueryString["nome"];
+          //   nivelUsuario = Request.QueryString["nivel"];
             
-             if (nomeUsuario == null) //não deixa entrar sem login
-              {
-                  Response.Redirect("login.aspx");
-            }
+           //  if (nomeUsuario == null) //não deixa entrar sem login
+         //     {
+          //        Response.Redirect("login.aspx");
+          //  }
 
 
 
@@ -233,7 +235,7 @@ namespace Sabor_da_Fruta
 
             con.AbrirCon();
 
-            sql = "INSERT INTO itenspedidos (numero, nome, descricao, quantidade, valor, observacao) VALUES (@numero, @nome, @descricao, @quantidade, @valor, @observacao)";
+            sql = "INSERT INTO itenspedidos (numero, nome, descricao, quantidade, valor, observacao, datapedido) VALUES (@numero, @nome, @descricao, @quantidade, @valor, @observacao,now())";
             cmd = new MySqlCommand(sql, con.con);
             cmd.Parameters.AddWithValue("@numero",  Convert.ToInt32(cbComanda.SelectedItem.Text));
             //  cmd.Parameters.AddWithValue("@numero", Convert.ToInt32(txtnumero.Text));
@@ -243,6 +245,7 @@ namespace Sabor_da_Fruta
             cmd.Parameters.AddWithValue("@quantidade", cbQuantidade.Text);
             cmd.Parameters.AddWithValue("@valor", Convert.ToDouble(txtvalor.Text));
             cmd.Parameters.AddWithValue("@observacao", txtobservacao.Text);
+            
 
             cmd.ExecuteNonQuery();
             lblMensagemOK.Text = "Salvo com Sucesso !!";
