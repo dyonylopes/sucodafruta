@@ -57,7 +57,10 @@
                     
                     <li class="nav-item active">
 
-                    
+                    <span class="form-inline my-2 my-lg-0">
+                            <asp:TextBox ID="txtbuscar" runat="server" class="form-control mr-sm-2" placeholder="Numero da comanda" aria-label="Search" />
+                            <asp:Button ID="btnPesquisar" Text="Pesquisar" runat="server" OnClick="btnPesquisar_Click" class="btn btn-outline-success my-2 my-sm-0" />
+                        </span>
 
 
                         
@@ -165,8 +168,10 @@
                         <!-- Botões -->
                         <td colspan="3">
 
-                            <asp:Button ID="btnBuscar" Text="Pesquisar" placeholder="Numero da comanda" aria-label="Search" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnBuscar_Click" />
-
+                            
+                             <asp:Button ID="btnSalvar" Text="Liberar" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" OnClick="btnSalvar_Click" Enabled="False" />
+                        <asp:Button ID="btnEditar" Text="Editar" runat="server" CssClass="btn btn-outline-info my-2 my-sm-0" Enabled="False" OnClick="btnEditar_Click" />
+                        <asp:Button ID="btnExcluir" Text="Limpar" runat="server" CssClass="btn btn-outline-danger my-2 my-sm-0" Enabled="False" OnClick="btnExcluir_Click" />
                             <!-- <asp:Button   ID="btnLogin" Text="Login" runat="server" Enabled="True" PostBackUrl="~/Login.aspx" /> <!-- redirecionamento no botão -->
                         </td>
 

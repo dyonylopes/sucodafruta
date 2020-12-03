@@ -113,12 +113,7 @@
 
 
             <tr>
-                <td>
-                    <asp:Label Text="Numero da Comanda" runat="server" />
-                </td>
-                <td colspan="4">
-                    <asp:TextBox ID="txtnumero" runat="server" />
-                </td>
+                
 
                 <tr>
                     <td>
@@ -229,12 +224,12 @@
 
 
 
-
+        <div class="container">
         <asp:Label Text="" ID="lblMensagemOK" runat="server" ForeColor="Green" />
 
                     <asp:Label Text="" ID="lblMensagemErro" runat="server" ForeColor="Red" />
 
-
+        </div>
 
         <div class="container">
             <div class="gridview">

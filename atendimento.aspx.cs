@@ -256,12 +256,11 @@ namespace Sabor_da_Fruta
         }
         private void ApagarCampos() // médoto criado para apagar caixar depois da digitação
         {
-            txtnumero.Text = "";
             txtnome.Text = "";
             txtdescricao.Text = "";
             txtvalor.Text = "";
             cbQuantidade.Text = "";
-
+            txtobservacao.Text = "";
         }
 
         protected void gridview_SelectedIndexChanged(object sender, EventArgs e)
