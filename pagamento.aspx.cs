@@ -13,19 +13,19 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
-        // string nomeUsuario, nivelUsuario;
+         string nomeUsuario, nivelUsuario;
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //  nomeUsuario = Request.QueryString["nome"];
-            //  nivelUsuario = Request.QueryString["nivel"];
+              nomeUsuario = Request.QueryString["nome"];
+              nivelUsuario = Request.QueryString["nivel"];
 
-            //  if (nomeUsuario == null) //não deixa entrar sem login
-            //  {
-            //     Response.Redirect("login.aspx");
-            // }
+              if (nomeUsuario == null) //não deixa entrar sem login
+              {
+                 Response.Redirect("login.aspx");
+             }
 
 
         }
@@ -94,13 +94,7 @@ namespace Sabor_da_Fruta
                 gridview1.DataBind(); // Atualizar dados           
 
             }
-            else
-            {
-
-                lblMensagemErro.Text = "Esta comanda não foi encontrado !!!";
-                Listar();
-
-            }
+            
 
 
             con.FecharCon();
@@ -138,7 +132,7 @@ namespace Sabor_da_Fruta
 
                 lblMensagemErro.Text = "Não possuem comandas ativas !!!";
      
-                grid.Visible = false;
+               
 
 
             }
@@ -194,7 +188,7 @@ namespace Sabor_da_Fruta
         private void ApagarCampos() // médoto criado para apagar caixar depois da digitação
         {
 
-            txtnumero.Text = "";
+            txtbuscar.Text = ""; 
 
 
         }
@@ -261,7 +255,7 @@ namespace Sabor_da_Fruta
 
             sql = "UPDATE itenspedidos SET numero = @numero, quantidade = @quantidade, observacao = @observacao where id = @id";
             cmd = new MySqlCommand(sql, con.con);
-            cmd.Parameters.AddWithValue("@numero", txtnumero.Text);
+            cmd.Parameters.AddWithValue("@numero",Convert.ToInt32(txtnumero.Text));
 
 
             cmd.Parameters.AddWithValue("@quantidade", txtquantidade.Text);
@@ -297,9 +291,7 @@ namespace Sabor_da_Fruta
             Listar();
             con.FecharCon();
 
-            btnEditar.Enabled = false;
-            btnExcluir.Enabled = false;
-            DesabilitarCampos();
+           
             ApagarCampos1();
         }
 
@@ -311,7 +303,7 @@ namespace Sabor_da_Fruta
             txtvalor.Text = "";
             txtquantidade.Text = "";
             txtobservacao.Text = "";
-
+            
         }
 
 

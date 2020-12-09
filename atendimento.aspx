@@ -197,7 +197,7 @@
                            
                             </td><td>
                             
-                             <asp:Button ID="btnLimpar" Text="Limpar" runat="server" CssClass="btn btn-danger my-2 my-sm-0" OnClick="btnLimpar_Click" />
+                            
 
                         </td>
 
@@ -230,10 +230,10 @@
             <div class="gridview">
                 <asp:GridView ID="gridview1" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="gridview1_SelectedIndexChanged">
                     <Columns>
-                        <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
+                        <asp:BoundField DataField="numero" HeaderText="Número da Comanda" />
                         <asp:BoundField DataField="nome" HeaderText="Produto" />
                         <asp:BoundField DataField="descricao" HeaderText="Descrição" />
-                        <asp:BoundField DataField="valor" HeaderText="Valor" />
+                        <asp:BoundField DataField="valor" HeaderText="Valor R$" />
                         <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
                         <asp:BoundField DataField="observacao" HeaderText="Observação" />
 
@@ -254,7 +254,7 @@
                     <Columns>
 
                         <asp:BoundField DataField="nome" HeaderText="Produto" />
-                        <asp:BoundField DataField="valor" HeaderText="Valor" />
+                        <asp:BoundField DataField="valor" HeaderText="Valor R$" />
                         <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
                         <asp:BoundField DataField="descricao" HeaderText="Descrição" />
 

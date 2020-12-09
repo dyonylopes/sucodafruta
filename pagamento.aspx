@@ -95,7 +95,7 @@
 
             <tr>
                 <td>
-                    <asp:Label Text="Numero da Comanda" runat="server" />
+                    <asp:Label Text="Número da Comanda" runat="server" />
                 </td>
                 <td colspan="3">
                     <asp:TextBox ID="txtnumero" runat="server" />
@@ -229,11 +229,11 @@
                 <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
                   
                     <Columns>
-                        <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
+                        <asp:BoundField DataField="numero" HeaderText="Número da Comanda" />
                         
                         <asp:BoundField DataField="produto" HeaderText="Produto" />
 
-                        <asp:BoundField DataField="valor_total" HeaderText="Valor Total" />
+                        <asp:BoundField DataField="valor_total" HeaderText="Valor Total R$ " />
                        
                        
                     
@@ -259,13 +259,13 @@
                 <asp:GridView ID="gridview1" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="gridview1_SelectedIndexChanged">
                     <Columns>
                         
-                        <asp:BoundField DataField="numero" HeaderText="Numero da Comanda" />
-                        <asp:BoundField DataField="id" HeaderText="Numero do Pedido" />
+                        <asp:BoundField DataField="numero" HeaderText="Número da Comanda" />
+                        <asp:BoundField DataField="id" HeaderText="Número do Pedido" />
                         <asp:BoundField DataField="nome" HeaderText="Produto" />
                          <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
-                        <asp:BoundField DataField="valor" HeaderText="Valor" />   
+                        <asp:BoundField DataField="valor" HeaderText="Valor R$" />   
                         <asp:BoundField DataField="observacao" HeaderText="Observação" />  
-                        <asp:BoundField DataField="valor_total" HeaderText="Valor Total" />
+                        <asp:BoundField DataField="valor_total" HeaderText="Valor Total R$" />
 
 
                          <asp:TemplateField>

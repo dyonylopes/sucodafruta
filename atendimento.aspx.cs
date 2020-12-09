@@ -15,19 +15,19 @@ namespace Sabor_da_Fruta
         Int32 id;
         private bool dataEntrada;
 
-        // string nomeUsuario, nivelUsuario;
+         string nomeUsuario, nivelUsuario;
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-         //   nomeUsuario = Request.QueryString["nome"];
-          //   nivelUsuario = Request.QueryString["nivel"];
+            nomeUsuario = Request.QueryString["nome"];
+             nivelUsuario = Request.QueryString["nivel"];
             
-           //  if (nomeUsuario == null) //não deixa entrar sem login
-         //     {
-          //        Response.Redirect("login.aspx");
-          //  }
+             if (nomeUsuario == null) //não deixa entrar sem login
+             {
+                  Response.Redirect("login.aspx");
+           }
 
 
 
@@ -355,10 +355,7 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
-        protected void btnLimpar_Click(object sender, EventArgs e)
-        {
-
-        }
+   
 
         protected void cbComanda_SelectedIndexChanged(object sender, EventArgs e)
         {

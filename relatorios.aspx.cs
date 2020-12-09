@@ -13,15 +13,18 @@ namespace Sabor_da_Fruta
     {
         Conexao con = new Conexao();
         Int32 id;
+
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnRelatorios_Click(object sender, EventArgs e)
         {
             Listar();
             Listarpedidos();
+            ProdutosVendidos();
         }
 
         protected void grid_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace Sabor_da_Fruta
             DataTable dt = new DataTable(); //para receber dados do mysql
 
             con.AbrirCon(); //Inner join para pegar de outras tabelas mudo o prefixo
-            sql = "SELECT year(datapedido) AS ano, monthname(datapedido) AS mes, sum((valor*quantidade)) AS valortotal FROM pedidos GROUP BY year(datapedido), monthname(datapedido)";
+            sql = "set lc_time_names = 'pt_BR'; SELECT year(datapedido) AS ano, monthname(datapedido) AS mes, sum((valor*quantidade)) AS valortotal FROM pedidos GROUP BY year(datapedido), monthname(datapedido) order by monthname(datapedido)";
             cmd = new MySqlCommand(sql, con.con);
             da.SelectCommand = cmd;
             da.Fill(dt);
@@ -64,7 +67,7 @@ namespace Sabor_da_Fruta
             DataTable dt = new DataTable(); //para receber dados do mysql
 
             con.AbrirCon(); //Inner join para pegar de outras tabelas mudo o prefixo
-            sql = "SELECT year(datapedido) AS ano, monthname(datapedido) AS mes, count(id) as numeropedidos From pedidos GROUP BY year(datapedido), monthname(datapedido)";
+            sql = "set lc_time_names = 'pt_BR'; SELECT year(datapedido) AS ano, monthname(datapedido) AS mes, count(id) as numeropedidos From pedidos GROUP BY year(datapedido), monthname(datapedido) order by monthname(datapedido)";
             cmd = new MySqlCommand(sql, con.con);
             da.SelectCommand = cmd;
             da.Fill(dt);
@@ -82,7 +85,39 @@ namespace Sabor_da_Fruta
             con.FecharCon();
         }
 
+        private void ProdutosVendidos()
+        {
+            string sql;
+            MySqlCommand cmd;
+            MySqlDataAdapter da = new MySqlDataAdapter(); //armazenar informações do mysql
+            DataTable dt = new DataTable(); //para receber dados do mysql
+
+            con.AbrirCon(); //Inner join para pegar de outras tabelas mudo o prefixo
+            sql = "set lc_time_names = 'pt_BR'; SELECT year(datapedido) AS ano, monthname(datapedido) AS mes, nome, sum(quantidade) as quantidade From pedidos GROUP BY nome  order by monthname(datapedido), quantidade desc";
+            cmd = new MySqlCommand(sql, con.con);
+            da.SelectCommand = cmd;
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                gridview2.Visible = true;
+                gridview2.DataSource = dt; //receber na Datatable
+                gridview2.DataBind(); // Atualizar dados           
+
+            }
+
+
+
+            con.FecharCon();
+        }
+
+
         protected void gridview1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gridview2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

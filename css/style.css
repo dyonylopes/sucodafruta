@@ -17,7 +17,7 @@ nav {
     margin-left: 0px; /*margem esquerda do menu*/
     font-family: Arial, Verdana, sans-serif; /* fromatção da letra do menu*/
     font-style: oblique; /* estilo da letra do menu*/
-    background: linear-gradient(to right, #ffffff, #D3D3D3, #A9A9A9, #000000); /* cor de fundo do menu*/
+    background: linear-gradient(to right, #ffffff, #FFFAFA, #ffffff, #ffffff ); /* cor de fundo do menu*/
     position: relative;
 }
 

@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.aspx">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="relatorios.aspx">Relatorios <span class="sr-only">(current)</span></a>
                     </li>
                    
                     <li class="nav-item dropdown">
@@ -62,20 +62,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalProdutos">Produtos</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#ModalUsuarios">Usuários</a>
-            </div>
-            </li>
-            <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultar
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="Dropdown" />
-                        <!-- <a class="dropdown-item" href="#">Comanda</a> -->
-                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalCategorias">Categorias</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalFornecedores">Fornecedores</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalProdutosCad">Produtos</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#ModalUsuarios">Usuários</a>
-            </div>
-            </li>
+           
       <li class="nav-item active">
           <asp:LinkButton ID="sair" runat="server" Text="Sair" class="nav-link" PostBackUrl="~/login.aspx" />
       </li>
@@ -241,7 +228,7 @@
                     <asp:GridView ID="grid" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="grid_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="nome" HeaderText="Produto" />
-                            <asp:BoundField DataField="valor" HeaderText="Valor" />
+                            <asp:BoundField DataField="valor" HeaderText="Valor R$" />
                             <asp:BoundField DataField="quantidade" HeaderText="Quantidade" />
                             <asp:BoundField DataField="descricao" HeaderText="Descrição" />
                             <asp:BoundField DataField="categoria" HeaderText="Categoria" />

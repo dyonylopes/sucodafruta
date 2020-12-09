@@ -2,8 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
 
     <script src="../css/bootstrap.css"></script>
@@ -16,7 +16,7 @@
     <link href="../css/style.css" rel="stylesheet" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Pagamento</title>
+    <title>Relatorios</title>
 
 
 </head>
@@ -53,6 +53,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     
+                    
                     <li class="nav-item active">
 
                     <span class="form-inline my-2 my-lg-0">                 
@@ -73,7 +74,7 @@
 
         <br />
         <br />
-        <h1> Recebimentos Mensal</h1>
+        <h1> Recebimento Mensal</h1>
         <br />
         <!-- gridview recebimentos -->
          <div class="container">
@@ -85,18 +86,18 @@
                         
                         <asp:BoundField DataField="mes" HeaderText="Mês" />
 
-                        <asp:BoundField DataField="valortotal" HeaderText="Valor Total de Recebimentos" />
+                        <asp:BoundField DataField="valortotal" HeaderText="Recebimentos R$ " />
                        
                                                                                                                                              
                     </Columns>
                 </asp:GridView>
             </div>
-        </div>
         
+        </div>
          <br />
         <br />
         
-        <h1> Numero de pedidos por mês</h1>
+        <h1> Pedidos por mês</h1>
         <br />
         <!-- gridview recebimentos -->
          <div class="container">
@@ -108,13 +109,42 @@
                         
                         <asp:BoundField DataField="mes" HeaderText="Mês" />
 
-                        <asp:BoundField DataField="numeropedidos" HeaderText="Numero de Pedidos realizados" />
+                        <asp:BoundField DataField="numeropedidos" HeaderText="Número de Pedidos realizados" />
+
+                       
                        
                                                                                                                                              
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
+         <br />
+         <br />
+
+         <h1> Produtos Vendidos</h1>
+        <br />
+        <!-- gridview recebimentos -->
+         <div class="container">
+            <div class="gridview">
+                <asp:GridView ID="gridview2" runat="server" CssClass="table table-striped table-dark" AutoGenerateColumns="false" OnSelectedIndexChanged="gridview2_SelectedIndexChanged">
+                  
+                    <Columns>
+                        <asp:BoundField DataField="ano" HeaderText="Ano" />
+                        
+                        <asp:BoundField DataField="mes" HeaderText="Mês" />
+
+                        <asp:BoundField DataField="nome" HeaderText="Nome do Produto" />
+
+                         <asp:BoundField DataField="quantidade" HeaderText="Quantidade Vendido" />
+                       
+                                                                                                                                             
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+
+
+
 
 
         </form>

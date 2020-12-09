@@ -82,6 +82,7 @@ namespace Sabor_da_Fruta
 
                     // Server.Transfer("index.aspx");
                     Response.Redirect("index.aspx?nome=" + nomeUsuario + "&nivel=" + nivelUsuario); // redirecionamento com parâmetro
+                    
                     lblMensagemErro.Text = "Logou";
                     // panelLogin.Visible = false;
                     txtSenha.Text = "";
